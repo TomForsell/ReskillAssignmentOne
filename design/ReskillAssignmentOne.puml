@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class FileInput
+class FileOutput
+
+abstract class Sales{
+String Region;
+String Country;
+int OrderID;
+}
+
+class Menu
+
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+@enduml
