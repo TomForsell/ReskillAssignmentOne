@@ -20,7 +20,7 @@ public class Region {
     }
 
     public double getRevenue(){
-        double revenuePerOrder;
+        double revenuePerOrder = 0;
         for(Order order: ordersPerRegion){
             revenuePerOrder += order.getRevenuePerOrder();
         }
