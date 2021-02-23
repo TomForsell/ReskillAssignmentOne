@@ -4,9 +4,9 @@ package reskillAssignmentOne;
 
 //@Getter
 public class Item {
-    private String type;
-    private double unitPrice;
-    private double unitCost;
+    private String type; // nummer 2
+    private double unitPrice; // nummer 9
+    private double unitCost; // nummer 10
     private int id;
     private static int nextId = 0;
 

@@ -21,14 +21,15 @@ public class Order {
         this.orderId = orderId;
         this.revenue=revenue;
     }
-    public Order(long orderId, LocalDate orderDate, LocalDate shipDate, char orderPriority, String itemType, int amountOfItems, String region, String country) {
-        this.orderId = orderId;
+    public Order(long orderId, LocalDate orderDate, LocalDate shipDate, char orderPriority, Item itemType, int unitsSold, String region, String country, String channel) {
+        this.orderId = orderId; //
         this.orderDate = orderDate;
         this.shipDate = shipDate;
         this.orderPriority = orderPriority;
         this.country = country;
         itemsOnOrder = new HashMap<>();
-
+        itemsOnOrder.put(itemType,unitsSold);
+        this.channel = channel;
 
     }
 
