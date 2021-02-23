@@ -50,6 +50,8 @@ public class SalesRecords {
 
      */
 
+// read csv file - get list
+    //populate Objects
 
 
 

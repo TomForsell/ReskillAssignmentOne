@@ -3,6 +3,7 @@ package reskillAssignmentOne;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CSVFileHandling {
@@ -10,6 +11,8 @@ public class CSVFileHandling {
     private  String line="";
     private  String[] csvValues;
     private List<String[]> orderlist = new ArrayList<>();
+
+
     public List readCSVFile (String filePath) throws FileNotFoundException,IOException{
 
         BufferedReader br;
@@ -18,8 +21,9 @@ public class CSVFileHandling {
                 br = new BufferedReader(new FileReader(filePath));
                 while ((line = br.readLine()) != null) {
                     csvValues = line.split(",");
-                    orderlist.add(csvValues);
-                   // System.out.println(Arrays.toString(csvValues));
+                    System.out.println(csvValues);
+                    //orderlist.add(csvValues);
+                    System.out.println(Arrays.toString(csvValues));
                 }
             } catch (FileNotFoundException e) {
                 throw new FileNotFoundException();

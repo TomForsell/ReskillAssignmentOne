@@ -1,8 +1,8 @@
 package reskillAssignmentOne;
 
-import lombok.Getter;
+//import lombok.Getter;
 
-@Getter
+//@Getter
 public class Item {
     private String type;
     private double unitPrice;
