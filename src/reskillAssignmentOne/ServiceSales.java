@@ -5,13 +5,13 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Service {
+public class ServiceSales {
 
     private final ConsoleIO user;
     private ArrayList<Region> regionsWithOrders;
 
 
-    public Service(ConsoleIO user){
+    public ServiceSales(ConsoleIO user){
         this.user = user;
         regionsWithOrders = new ArrayList<>();
 
