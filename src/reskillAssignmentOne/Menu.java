@@ -8,7 +8,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         ConsoleIO user = new ConsoleIO(scanner);
 
-        ServiceSales flightSchedule= new ServiceSales(user);
+        //ServiceSales flightSchedule= new ServiceSales(user);
         int userChoice;
         System.out.println("\n WELCOME\n -------------------------");
 
