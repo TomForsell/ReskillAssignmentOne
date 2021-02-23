@@ -4,7 +4,7 @@ import java.io.*;
 public class CSVReader {
     private String filePath= "C:\\Reskill\\salesrecords.txt";
     private  String line="";
-    private  String[] CSVvalues;
+    private  String[] CSVvalues; // Er dette navn? Skal det starte med liten bokstav?
 
     public String[] readCSVFile (String filePath) throws FileNotFoundException,IOException{
         BufferedReader br;
