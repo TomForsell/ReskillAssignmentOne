@@ -7,12 +7,12 @@ import java.util.HashMap;
 
 public class ServiceSales {
 
-    private final ConsoleIO user;
+  //  private final ConsoleIO user;
     private ArrayList<Region> regionsWithOrders;
 
 
-    public ServiceSales(ConsoleIO user){
-        this.user = user;
+    public ServiceSales(){
+        //this.user = user;
         regionsWithOrders = new ArrayList<>();
 
     }
@@ -63,15 +63,16 @@ public class ServiceSales {
      */
 
     public double getRevenueperRegion(String navn){
-        double reveunue;
+        double reveunue=0;
         for(Region region: regionsWithOrders){
-            if navn.equals(region.getName()){
-                reveunue = region.getRevenue;
+            if (navn.equals(region.getName())){
+                reveunue = region.getRevenue();
             }
         }
 
 
 
+        return reveunue;
 
     }
 

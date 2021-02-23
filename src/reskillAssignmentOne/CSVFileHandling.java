@@ -23,7 +23,7 @@ public class CSVFileHandling {
                 while ((line = br.readLine()) != null) {
                     csvValues = line.split(",");
                     //string region = csvValues[0].toString()
-                    System.out.println(csvValues[0].toString();
+                   // System.out.println(csvValues[0].toString();
                     orderlist.add(csvValues);
                     //System.out.println(Arrays.toString(csvValues));
                 }
