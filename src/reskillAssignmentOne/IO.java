@@ -11,8 +11,10 @@ public interface IO {
     int getInt(String message);
     /*String getCode(String message, String regex ); // check if we can use only this
     LocalTime getTime(String message);
-    double getDouble(String message);
+
      */
+    long getLong(String message);
+
 
     String getString(String message);
 }

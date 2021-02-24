@@ -49,4 +49,18 @@ public class ConsoleIO implements IO {
 
         return scanner.next();
     }
+
+    @Override
+    public long getLong(String message){
+        do {
+            logMessage(message);
+            String userInput = scanner.next();
+            try {
+                return Long.parseLong(userInput);
+            } catch (NumberFormatException ex) {
+                System.err.println("Wrong format! Try again");
+            }
+        }
+        while (true);
+    }
 }

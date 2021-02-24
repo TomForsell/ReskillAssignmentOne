@@ -148,10 +148,11 @@ public class Menu {
     private void submenuOrder(){
         int userChoice;
         do {
-            userChoice = user.getInt("\n 1: Order info \n 2: Find the most profitable order \n 3: Exit \n");
+            userChoice = user.getInt("\n 1: See order details \n 2: Find the most profitable order \n 3: Exit \n");
             switch (userChoice) {
 
                 case 1:
+                    service.displayOrder();
 
                     break;
 

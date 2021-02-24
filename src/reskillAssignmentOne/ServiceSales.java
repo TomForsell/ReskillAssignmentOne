@@ -162,7 +162,21 @@ public class ServiceSales {
     public Order findMaxOrder(){
         Collection<Order> ourValues = allOrders.values();
         return ourValues.stream().max(comparing(Order::getProfitForOrder)).get();
+    }
 
+    public Order findOrder(){
+        long orderId = user.getLong("Type an order ID: ");
+        if(allOrders.isEmpty()){
+            return null;
+        } else{
+            return allOrders.get(orderId);
+        }
+
+    }
+
+    public void displayOrder(){
+        Order orderFound = findOrder();
+        user.logMessage(orderFound.toString());
 
     }
 
