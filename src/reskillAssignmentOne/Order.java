@@ -2,13 +2,14 @@ package reskillAssignmentOne;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 
 public class Order {
     private long orderId;
-    private LocalDate orderDate;
-    private LocalDate shipDate;
+    private Date orderDate;
+    private Date shipDate;
     private char orderPriority;
     private String country;
     private String channel; // vurdere å gjøre det som enum
@@ -21,7 +22,7 @@ public class Order {
         this.orderId = orderId;
         this.revenue=revenue;
     }
-    public Order(long orderId, LocalDate orderDate, LocalDate shipDate, char orderPriority, Item itemType, int unitsSold, String region, String country, String channel) {
+    public Order(long orderId, Date orderDate, Date shipDate, char orderPriority, Item itemType, int unitsSold, String region, String country, String channel) {
         this.orderId = orderId; //
         this.orderDate = orderDate;
         this.shipDate = shipDate;
