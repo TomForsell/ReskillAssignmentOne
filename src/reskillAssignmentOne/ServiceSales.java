@@ -7,13 +7,13 @@ import java.util.HashMap;
 
 public class ServiceSales {
 
-  //  private final ConsoleIO user;
+    //private final ConsoleIO user;
     private ArrayList<Region> regionsWithOrders;
 
 
     public ServiceSales(){
-        //this.user = user;
         regionsWithOrders = new ArrayList<>();
+        //this.user = user;
 
     }
 
@@ -33,8 +33,8 @@ public class ServiceSales {
 1.1 Revenue (velge en region)
 1.2 Cost
 1.3 Profit
-1.4 Mest solgt items
-1.5 Mest brukt kanal
+1.4 Most sold items
+1.5 Most used channel
 
 2. Statistics per Country
 1.1 Revenue
@@ -52,14 +52,6 @@ public class ServiceSales {
 
 5. Print rapport
 
-
-
-
-
-
-
-
-
      */
 
     public double getRevenueperRegion(String navn){
@@ -70,13 +62,14 @@ public class ServiceSales {
             }
         }
 
-
-
         return reveunue;
 
     }
 
 
+    public void createReport(){
+
+    }
 
 
 }
