@@ -42,4 +42,11 @@ public class ConsoleIO implements IO {
     public void logMessage(String message){
         System.out.println(message);
     }
+
+    @Override
+    public String getString(String message) {
+        logMessage(message);
+
+        return scanner.next();
+    }
 }

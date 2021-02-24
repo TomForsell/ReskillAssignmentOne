@@ -2,47 +2,89 @@ package reskillAssignmentOne;
 
 
 import lombok.Getter;
-
-
-import java.io.*;
+import lombok.ToString;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Scanner;
 
+
+@Getter
+@ToString
 public class ServiceSales {
-    @Getter
 
-    //private final ConsoleIO user;
-    private ArrayList<Region> regionsWithOrders; // vurdere å lage Hashmap
+    Scanner scanner = new Scanner(System.in);
+    private final ConsoleIO user;
+    private HashMap<String,Region> regionsWithOrders; // vurdere å lage Hashmap
     private HashMap <Long,Order> allOrders;
     private ArrayList<Item> allItems; // vurdere å ha HashSet
 
 
     public ServiceSales(){
-        regionsWithOrders = new ArrayList<>();
+        regionsWithOrders = new HashMap<>();
         allOrders = new HashMap<>();
         allItems = new ArrayList<>();
-        //this.user = user;
+       user = new ConsoleIO(scanner);
 
     }
 
-    public void addRegion(Region region){
-        regionsWithOrders.add(region);
+    public boolean addRegion(Region region){
+        if(regionsWithOrders.containsKey(region.getName())){
+            regionsWithOrders.put(region.getName(),region);
+            return false;
+
+        }
+        return true;
     }
     public void addOrder(Order newOrder){
         // sjekk om orderId er allerede lagret
         allOrders.put(newOrder.getOrderId(), newOrder);
     }
 
+    public void addOrderToRegion(Order newOrder, Region region){
+        Region regionToChange = regionsWithOrders.get(region.getName());
+        regionToChange.addOrder(newOrder);
+
+    }
+
     public void addItem(Item itemToAdd){
         allItems.add(itemToAdd);
     }
 
-   /* her kan vi lage enten en privat metode for å lese fra fil
-   eller lage flere metoder som skal lage objekter og legge dem i beholdere: HashMap, ArrayList osv
+    public Collection<Region> getRegionsWithOrders() {
+        Collection<Region> regions = regionsWithOrders.values();
+        return regions;
+    }
 
-    */
 
-    /*
+
+    public boolean isRegionAdded(Region regionToCheck){
+        if (regionsWithOrders.containsKey(regionToCheck.getName())){
+            return true;
+        }
+        return false;
+    }
+
+    public void createReport(){
+
+    }
+
+    public void totalRevenuePerRegion() {
+        double regionRevenue = 0;
+        user.logMessage("Chose a region");
+        user.logMessage(getRegionsWithOrders().toString());
+        String regionToShow = user.getString("Type in region name: ");
+        Region regionWithOrders = regionsWithOrders.get(regionToShow);
+        if (regionWithOrders == null){
+            user.logMessage("Region not found in the system");
+        } else {
+            regionRevenue = regionWithOrders.getRevenue();
+        } 
+        user.logMessage("The total revenue for " + regionWithOrders.getName() + " is " + regionRevenue);
+    }
+
+}
+/*
     Functions: vi må ha funksjosjer som returnerer resultat som vi skal sende til consoleIO eller
     til Logger for å bygge fil.
 1. Statics per Region
@@ -69,23 +111,3 @@ public class ServiceSales {
 5. Print rapport
 
      */
-
-    public double getRevenueperRegion(String navn){
-        double reveunue=0;
-        for(Region region: regionsWithOrders){
-            if (navn.equals(region.getName())){
-                reveunue = region.getRevenue();
-            }
-        }
-
-        return reveunue;
-
-    }
-
-
-    public void createReport(){
-
-    }
-
-
-}

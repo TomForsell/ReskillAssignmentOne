@@ -69,10 +69,15 @@ public class CSVFileHandling implements FileHandling {
     public void populateObjects(){
         Item newItem = new Item(itemType,unitPrice,unitCost);
         Order newOrder = new Order(orderId,orderDate,shipDate,orderPriority,newItem,unitsSold,region,country,channel);
-        Region newRegion = new Region(region,newOrder);
+        Region newRegion = new Region(region);
+        if(myServiceSales.isRegionAdded(newRegion)){
+            myServiceSales.addOrderToRegion(newOrder, newRegion);
+        } else {
+            myServiceSales.addRegion(newRegion);
+            newRegion.addOrder(newOrder);
+        }
         myServiceSales.addItem(newItem);
         myServiceSales.addOrder(newOrder);
-        myServiceSales.addRegion(newRegion);
 
     }
     public void parseStrings() throws ParseException{

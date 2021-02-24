@@ -81,7 +81,7 @@ public class Menu {
             switch (userChoice) {
 
                 case 1:
-
+                    service.totalRevenuePerRegion();
                     break;
 
                 case 2:

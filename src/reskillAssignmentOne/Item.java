@@ -1,6 +1,10 @@
 package reskillAssignmentOne;
 
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@ToString
 public class Item {
     private String type; // nummer 2
     private double unitPrice; // nummer 9
@@ -27,7 +31,10 @@ public class Item {
         return unitCost;
     }
 
+
     public double getProfitPerItemType(){
         return unitPrice - unitCost;
     }
+
+
 }

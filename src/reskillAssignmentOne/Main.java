@@ -1,7 +1,6 @@
 package reskillAssignmentOne;
 
 import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -12,6 +11,8 @@ public class Main {
 
         Menu menu = new Menu(filePath);
         menu.menuStart();
+
+
     }
 
 }
