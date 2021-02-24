@@ -67,7 +67,8 @@ public class CSVFileHandling implements FileHandling {
         Order newOrder = new Order(orderId,orderDate,shipDate,orderPriority,newItem,unitsSold,region,country,channel, revenue);
         myServiceSales.addItem(newItem);
         myServiceSales.addOrder(newOrder);
-
+        myServiceSales.setItemIntoHashMap(itemType, newItem);
+        myServiceSales.addOrderToRegion(region, newOrder);
 
     }
     public void parseStrings() throws ParseException{

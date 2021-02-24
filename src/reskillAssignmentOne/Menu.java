@@ -67,7 +67,7 @@ public class Menu {
                     break;
 
                 case 5:
-                    service.printItems();
+
 
 
                     break;
@@ -136,6 +136,7 @@ public class Menu {
                     break;
 
                 case 5:
+                    service.displayRegionInfo();
 
 
                     break;
@@ -169,10 +170,11 @@ public class Menu {
     private void submenuItem(){
         int userChoice;
         do {
-            userChoice = user.getInt("\n 1: Item type info \n 2: Most sold item in all regions \n 3: Exit \n");
+            userChoice = user.getInt("\n 1: See all the item types ordered \n 2: Most sold item in all regions \n 3: Exit \n");
             switch (userChoice) {
 
                 case 1:
+                    service.getItemTypeInfo();
 
                     break;
 

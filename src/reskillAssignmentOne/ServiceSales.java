@@ -1,26 +1,18 @@
 package reskillAssignmentOne;
 
-
-import lombok.Getter;
-import lombok.ToString;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 import static java.util.Comparator.comparing;
 
 
-@Getter
-
 public class ServiceSales {
 
     Scanner scanner = new Scanner(System.in);
     private final ConsoleIO user;
-    private HashMap<String,Region> regionsWithOrders; // vurdere å lage Hashmap
-    private HashMap <Long,Order> allOrders;
-    private ArrayList<Item> allItems; //
-    private HashSet<Item> setOfItems;
+    private HashMap<String,ArrayList<Order>> regionsWithOrders; //
+    private HashMap <Long,Order> allOrders; // to display order info
+    private ArrayList<Item> allItems; // to find the most solgt item type
+    private HashMap<String, Item> hashMapItems; // to display info about item types.
 
 
     public ServiceSales(){
@@ -28,30 +20,28 @@ public class ServiceSales {
         allOrders = new HashMap<>();
         allItems = new ArrayList<>();
         user = new ConsoleIO(scanner);
+        hashMapItems = new HashMap<>();
 
     }
 
 
-
-    public void setItemHashSet(HashSet<Item> set){
-        setOfItems = set;
-    }
-    public boolean addRegion(Region region){
-        if(regionsWithOrders.containsKey(region.getName())){
-            regionsWithOrders.put(region.getName(),region);
-            return false;
-
-        }
-        return true;
-    }
+    // Setters
     public void addOrder(Order newOrder){
-        // sjekk om orderId er allerede lagret
         allOrders.put(newOrder.getOrderId(), newOrder);
     }
 
-    public void addOrderToRegion(Order newOrder, Region region){
-        Region regionToChange = regionsWithOrders.get(region.getName());
-        regionToChange.addOrder(newOrder);
+    public void addOrderToRegion(String regionName, Order order){
+        List<Order> orderList = regionsWithOrders.get(regionName);
+
+        // if list does not exist create it
+        if(orderList == null) {
+            orderList = new ArrayList<Order>();
+            orderList.add(order);
+            regionsWithOrders.put(regionName, (ArrayList<Order>) orderList);
+        } else {
+            // add if item is not already in list
+            if(!orderList.contains(order)) orderList.add(order);
+        }
 
     }
 
@@ -59,17 +49,14 @@ public class ServiceSales {
         allItems.add(itemToAdd);
     }
 
-    public void addItemToSet(Item itemToAdd){
-        setOfItems.add(itemToAdd);
+    public void setItemIntoHashMap(String type, Item item){
+        hashMapItems.put (type, item);
     }
 
-    public Collection<Region> getRegionsWithOrders() {
-        Collection<Region> regions = regionsWithOrders.values();
-        return regions;
-    }
+    //Getters
 
 
-
+    //Help methods
     public boolean isRegionAdded(Region regionToCheck){
         if (regionsWithOrders.containsKey(regionToCheck.getName())){
             return true;
@@ -77,24 +64,56 @@ public class ServiceSales {
         return false;
     }
 
-    public void createReport(){
+
+
+
+    // Functions from menu
+
+    //3.1 See order details
+    public void displayOrder(){
+        Order orderFound = findOrder();
+        user.logMessage(orderFound.toString());
+    }
+
+    public Order findOrder(){
+        long orderId = user.getLong("Type an order ID: ");
+        if(allOrders.isEmpty()){
+            return null;
+        } else{
+            return allOrders.get(orderId);
+        }
+
+    }
+    //3.2 Find the most profitable order
+    public void displayMostProfitableOrder(){
+        Order order = findMaxOrder();
+        user.logMessage(order.toString() + " \nProfit for this order: " + order.getProfitForOrder());
+    }
+
+    public Order findMaxOrder(){
+        Collection<Order> ourValues = allOrders.values();
+        return ourValues.stream().max(comparing(Order::getProfitForOrder)).get();
+    }
+
+    //Printing all the orders in the system
+    public void printOrders(){
+        Collection<Order> orders = allOrders.values();
+        for(Order o: orders){
+            user.logMessage(o.toString());
+        }
+
 
     }
 
-    public void totalRevenuePerRegion() {
-        double regionRevenue = 0;
-        user.logMessage("Chose a region");
-        user.logMessage(getRegionsWithOrders().toString());
-        String regionToShow = user.getString("Type in region name: ");
-        Region regionWithOrders = regionsWithOrders.get(regionToShow);
-        if (regionWithOrders == null){
-            user.logMessage("Region not found in the system");
-        } else {
-            regionRevenue = regionWithOrders.getRevenue();
-        } 
-        user.logMessage("The total revenue for " + regionWithOrders.getName() + " is " + regionRevenue);
+    // 4.1 See all the item types ordered
+    public void getItemTypeInfo(){
+        for (Item i : hashMapItems.values()) {
+            user.logMessage(i.toString());
+        }
+
     }
 
+    //4.2 Most sold item in all regions
     public void mostSoldItem(){
         Item item = mostCommon(allItems);
         user.logMessage(item.toString());
@@ -118,86 +137,14 @@ public class ServiceSales {
         return max.getKey();
     }
 
-    public void printItems(){
-        HashSet <Item> newSet = fromListToSet(allItems);
-        for(Item i: newSet){
-            user.logMessage(i.toString());
+    public void displayRegionInfo(){
+        Set <String> regions = (Set<String>) regionsWithOrders.keySet();
+        for(String s: regions){
+            user.logMessage(s);
         }
 
     }
 
-    public void printOrders(){
-        Collection<Order> orders = allOrders.values();
-        for(Order o: orders){
-            user.logMessage(o.toString());
-        }
-
-    }
-    public void printRegions(){
-        Collection<Region> regions = regionsWithOrders.values();
-        if(regions.isEmpty()){
-            user.logMessage("Empty");
-        } else{
-            user.logMessage("Have smth but cannot show");
-            for(Region r: regions){
-                user.logMessage(r.toString());
-            }
-        }
-
-
-    }
-
-
-    public HashSet<Item> fromListToSet(ArrayList<Item> oldList){
-        Set <Item> setOfItems = new HashSet<>(oldList);
-        return (HashSet<Item>) setOfItems;
-    }
-
-    public void displayMostProfitableOrder(){
-        Order order = findMaxOrder();
-        user.logMessage(order.toString() + " \nProfit for this order: " + order.getProfitForOrder());
-    }
-
-
-    public Order findMaxOrder(){
-        Collection<Order> ourValues = allOrders.values();
-        return ourValues.stream().max(comparing(Order::getProfitForOrder)).get();
-    }
-
-    public Order findOrder(){
-        long orderId = user.getLong("Type an order ID: ");
-        if(allOrders.isEmpty()){
-            return null;
-        } else{
-            return allOrders.get(orderId);
-        }
-
-    }
-
-    public void displayOrder(){
-        Order orderFound = findOrder();
-        user.logMessage(orderFound.toString());
-
-    }
-
-    private HashSet<Item> getSetOfItems(){
-        HashSet<Item> items = new HashSet<>();
-        Collection <Order> orders = allOrders.values();
-        for (Order o: orders){
-            items.add(o.getItemType());
-        }
-        return items;
-    }
-
-    public void getItemTypeInfo(){
-        for(Item i: setOfItems){
-            user.logMessage(i.toString());
-        }
-    }
-
-    public void getItemIntoSet(Item item){
-        setOfItems.add(item);
-    }
 
 
 }
@@ -218,11 +165,11 @@ public class ServiceSales {
 1.4 Mest solgt items
 1.5 Mest brukt kanal
 
-3. Order Statics
+3. Order Statics OK Ferdig
 3.1 Order info (tar imot OrederID)
 3.2 Most profitable Order
 
-4. Item Type ifo
+4. Item Type ifo  OK Ferdig
 4.1 Item type info (tar imot type og printer ut info)
 4.2 Mest solgt item type in all regions and channels (plukke ut en item type som forekommer flest) OK.
 
