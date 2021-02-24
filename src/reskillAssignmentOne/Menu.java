@@ -5,20 +5,20 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
 
-public class Menu<path> {
+public class Menu {
 
 
     CSVFileHandling newFile;
     String filePath;
-    Scanner scanner;
+    Scanner scanner = new Scanner(System.in);
     ConsoleIO user = new ConsoleIO(scanner);
 
     ServiceSales service;
 
-    public Menu(String path, Scanner scanner) {
+    public Menu(String path) {
         newFile = new CSVFileHandling();
         this.filePath = path;
-        this.scanner = scanner;
+        //this.scanner = scanner;
         try{
             newFile.readFile(filePath);
         } catch (FileNotFoundException e){
