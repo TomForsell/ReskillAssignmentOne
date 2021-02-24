@@ -1,10 +1,11 @@
 package reskillAssignmentOne;
 
 
+import lombok.Data;
 
+
+@Data
 public class Item {
-
-
 
     private String type; // nummer 2
     private double unitPrice; // nummer 9
@@ -36,18 +37,31 @@ public class Item {
         return unitPrice - unitCost;
     }
 
-    public boolean equals(Item other){
-        if (this == other) return true;
-        if (other == null || getClass() != other.getClass()) return false;
-        return type.equals(other.getType());
+    @Override
+    public boolean equals(Object o) {
+        // self check
+        if (this == o)
+            return true;
+        // null check
+        if (o == null)
+            return false;
+        // type check and cast
+        if (getClass() != o.getClass())
+            return false;
+        Item item = (Item) o;
+        // field comparison
+        boolean b = type.equals(item.getType())
+                ;
+        return b;
     }
+
 
     @Override
     public String toString() {
-        return "Item{" +
-                "type='" + type + '\'' +
-                ", unitPrice=" + unitPrice +
-                ", unitCost=" + unitCost +
-                '}';
+        return "Item type: " + type +
+                ", unitPrice = " + unitPrice +
+                ", unitCost = " + unitCost;
     }
+
+
 }

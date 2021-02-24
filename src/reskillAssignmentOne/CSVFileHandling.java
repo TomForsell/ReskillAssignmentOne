@@ -33,6 +33,7 @@ public class CSVFileHandling implements FileHandling {
     private double unitCost;
     private int unitsSold;
     private String region;
+    private double revenue;
 
 
     public List readFile(String filePath) throws FileNotFoundException,IOException,ParseException{
@@ -68,7 +69,7 @@ public class CSVFileHandling implements FileHandling {
 
     public void populateObjects(){
         Item newItem = new Item(itemType,unitPrice,unitCost);
-        Order newOrder = new Order(orderId,orderDate,shipDate,orderPriority,newItem,unitsSold,region,country,channel);
+        Order newOrder = new Order(orderId,orderDate,shipDate,orderPriority,newItem,unitsSold,region,country,channel, revenue);
         Region newRegion = new Region(region);
         if(myServiceSales.isRegionAdded(newRegion)){
             myServiceSales.addOrderToRegion(newOrder, newRegion);
@@ -77,6 +78,7 @@ public class CSVFileHandling implements FileHandling {
             newRegion.addOrder(newOrder);
         }
         myServiceSales.addItem(newItem);
+        myServiceSales.addItemToSet(newItem);
         myServiceSales.addOrder(newOrder);
 
     }
@@ -94,6 +96,7 @@ public class CSVFileHandling implements FileHandling {
        unitsSold = parseInt(csvValues[8]);
        unitPrice = parseDouble(csvValues[9]);
        unitCost = parseDouble(csvValues[10]);
+       revenue = parseDouble(csvValues[11]);
   }
 
     public ServiceSales getMyServiceSales() {

@@ -65,7 +65,10 @@ public class Menu {
                     break;
 
                 case 5:
-                    service.createReport();
+                    //service.createReport();
+                    //service.printItems();
+                    //service.printOrders();
+                    service.displayMostProfitableOrder();
 
                     break;
             }
@@ -81,7 +84,7 @@ public class Menu {
             switch (userChoice) {
 
                 case 1:
-                    service.totalRevenuePerRegion();
+                    service.displayMostProfitableOrder();
                     break;
 
                 case 2:
