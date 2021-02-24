@@ -53,6 +53,7 @@ public class Order {
         return revenue;
 
     }
+    public Item getItemType(){return itemtype;}
 
 
     public double getProfitForOrder(){

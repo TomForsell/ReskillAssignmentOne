@@ -3,6 +3,7 @@ package reskillAssignmentOne;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -32,6 +33,7 @@ public class Menu {
             return;
         }
         service = newFile.getMyServiceSales();
+
     }
 
 
@@ -65,9 +67,7 @@ public class Menu {
                     break;
 
                 case 5:
-                    //service.createReport();
-                    //service.printItems();
-                    //service.printOrders();
+                    service.printItems();
 
 
                     break;

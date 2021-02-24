@@ -6,11 +6,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -20,7 +16,6 @@ public class CSVFileHandling implements FileHandling {
     private  String[] csvValues;
     private List<String[]> orderlist = new ArrayList<>();
     private ServiceSales myServiceSales = new ServiceSales();
-
 
     private long orderId;
     private Date orderDate;
@@ -70,16 +65,9 @@ public class CSVFileHandling implements FileHandling {
     public void populateObjects(){
         Item newItem = new Item(itemType,unitPrice,unitCost);
         Order newOrder = new Order(orderId,orderDate,shipDate,orderPriority,newItem,unitsSold,region,country,channel, revenue);
-        Region newRegion = new Region(region);
-        if(myServiceSales.isRegionAdded(newRegion)){
-            myServiceSales.addOrderToRegion(newOrder, newRegion);
-        } else {
-            myServiceSales.addRegion(newRegion);
-            newRegion.addOrder(newOrder);
-        }
         myServiceSales.addItem(newItem);
-        myServiceSales.addItemToSet(newItem);
         myServiceSales.addOrder(newOrder);
+
 
     }
     public void parseStrings() throws ParseException{
@@ -102,6 +90,9 @@ public class CSVFileHandling implements FileHandling {
     public ServiceSales getMyServiceSales() {
         return myServiceSales;
     }
+
+
+
 }
 
 

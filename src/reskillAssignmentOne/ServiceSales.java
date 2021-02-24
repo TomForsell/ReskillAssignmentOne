@@ -19,7 +19,7 @@ public class ServiceSales {
     private final ConsoleIO user;
     private HashMap<String,Region> regionsWithOrders; // vurdere å lage Hashmap
     private HashMap <Long,Order> allOrders;
-    private ArrayList<Item> allItems; // vurdere å ha HashSet
+    private ArrayList<Item> allItems; //
     private HashSet<Item> setOfItems;
 
 
@@ -27,11 +27,15 @@ public class ServiceSales {
         regionsWithOrders = new HashMap<>();
         allOrders = new HashMap<>();
         allItems = new ArrayList<>();
-        setOfItems = new HashSet<>();
         user = new ConsoleIO(scanner);
 
     }
 
+
+
+    public void setItemHashSet(HashSet<Item> set){
+        setOfItems = set;
+    }
     public boolean addRegion(Region region){
         if(regionsWithOrders.containsKey(region.getName())){
             regionsWithOrders.put(region.getName(),region);
@@ -115,7 +119,8 @@ public class ServiceSales {
     }
 
     public void printItems(){
-        for(Item i: setOfItems){
+        HashSet <Item> newSet = fromListToSet(allItems);
+        for(Item i: newSet){
             user.logMessage(i.toString());
         }
 
@@ -144,31 +149,13 @@ public class ServiceSales {
 
 
     public HashSet<Item> fromListToSet(ArrayList<Item> oldList){
-        HashSet<Item> setOfItems = new HashSet<>();
-        for(Item item: oldList) {
-            if(!setOfItems.contains(item)){
-                setOfItems.add(item);
-            }
-
-        }
-        return setOfItems;
+        Set <Item> setOfItems = new HashSet<>(oldList);
+        return (HashSet<Item>) setOfItems;
     }
+
     public void displayMostProfitableOrder(){
         Order order = findMaxOrder();
         user.logMessage(order.toString() + " \nProfit for this order: " + order.getProfitForOrder());
-    }
-    public Order findMostProfitableOrder(){
-        double maxRevenue = 0;
-        Order maxOrder = null;
-        Collection <Order> orders = allOrders.values();
-        for(Order o: orders){
-            double verdi = o.getProfitForOrder();
-            if(maxRevenue < verdi){
-                maxRevenue = verdi;
-                maxOrder = o;
-            }
-        }
-        return maxOrder;
     }
 
 
@@ -179,22 +166,26 @@ public class ServiceSales {
 
     }
 
-    private void lesFraFil(String file)  {
-        try{
-            File fileWithData = new File(file);
-            Scanner myReader = new Scanner (fileWithData);
-
-            String currentLine = myReader.nextLine();
-
-            while(myReader.hasNext()){
-
-
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    private HashSet<Item> getSetOfItems(){
+        HashSet<Item> items = new HashSet<>();
+        Collection <Order> orders = allOrders.values();
+        for (Order o: orders){
+            items.add(o.getItemType());
         }
-
+        return items;
     }
+
+    public void getItemTypeInfo(){
+        for(Item i: setOfItems){
+            user.logMessage(i.toString());
+        }
+    }
+
+    public void getItemIntoSet(Item item){
+        setOfItems.add(item);
+    }
+
+
 }
 /*
     Functions: vi må ha funksjosjer som returnerer resultat som vi skal sende til consoleIO eller
