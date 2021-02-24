@@ -6,9 +6,10 @@ public class Region {
     String name;
     ArrayList<Order> ordersPerRegion;
 
-    public Region(String navn){
+    public Region(String navn, Order order){
         this.name = navn;
         ordersPerRegion = new ArrayList<>();
+        addOrder(order);
     }
 
     public void addOrder(Order order){

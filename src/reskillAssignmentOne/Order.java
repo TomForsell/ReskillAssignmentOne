@@ -1,5 +1,11 @@
 package reskillAssignmentOne;
 
+import lombok.Getter;
+
+import java.util.Date;
+import java.util.HashMap;
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,7 +20,7 @@ public class Order {
     private String country;
     private String channel; // vurdere å gjøre det som enum
     private HashMap<Item, Integer> itemsOnOrder; //((HashMap (Item, Unitssolgt)))
-    private ArrayList<Item> itemsonOrder;
+
 
     double revenue;
 
@@ -34,9 +40,18 @@ public class Order {
 
     }
 
+
+    // Getters
+
+    public long getOrderId() {
+        return orderId;
+    }
+
     public double getRevenuePerOrder(){
         return revenue;
 
 
     }
+
+
 }

@@ -2,10 +2,20 @@ package reskillAssignmentOne;
 
 import java.util.Scanner;
 
-public class Menu {
-    Scanner scanner = new Scanner(System.in);
+public class Menu<path> {
+
     ConsoleIO user = new ConsoleIO(scanner);
+    CSVFileHandling newFile = new CSVFileHandling();
+    String path;
+    Scanner scanner;
+    newFile.readFile(path);
+
     ServiceSales service = new ServiceSales();
+
+    public Menu(String path, Scanner scanner){
+        this.path = path;
+        this.scanner = scanner;
+    }
 
 
 

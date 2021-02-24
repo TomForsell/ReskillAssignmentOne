@@ -1,24 +1,40 @@
 package reskillAssignmentOne;
 
 
+import lombok.Getter;
+
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ServiceSales {
+    @Getter
 
     //private final ConsoleIO user;
-    private ArrayList<Region> regionsWithOrders;
+    private ArrayList<Region> regionsWithOrders; // vurdere å lage Hashmap
+    private HashMap <Long,Order> allOrders;
+    private ArrayList<Item> allItems; // vurdere å ha HashSet
 
 
     public ServiceSales(){
         regionsWithOrders = new ArrayList<>();
+        allOrders = new HashMap<>();
+        allItems = new ArrayList<>();
         //this.user = user;
 
     }
 
     public void addRegion(Region region){
         regionsWithOrders.add(region);
+    }
+    public void addOrder(Order newOrder){
+        // sjekk om orderId er allerede lagret
+        allOrders.put(newOrder.getOrderId(), newOrder);
+    }
+
+    public void addItem(Item itemToAdd){
+        allItems.add(itemToAdd);
     }
 
    /* her kan vi lage enten en privat metode for å lese fra fil
