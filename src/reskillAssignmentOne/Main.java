@@ -7,8 +7,8 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        String path =
-        Menu menu = new Menu(path, scanner);
+        String filePath = scanner.next();
+        Menu menu = new Menu(filePath, scanner);
         menu.menuStart();
     }
 
