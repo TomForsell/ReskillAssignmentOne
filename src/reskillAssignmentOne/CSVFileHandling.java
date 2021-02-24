@@ -69,9 +69,6 @@ public class CSVFileHandling implements FileHandling {
     public void populateObjects(){
         Item newItem = new Item(itemType,unitPrice,unitCost);
         Order newOrder = new Order(orderId,orderDate,shipDate,orderPriority,newItem,unitsSold,region,country,channel);
-        myServiceSales.
-
-
 
     }
     public void parseStrings() throws ParseException{
