@@ -1,20 +1,33 @@
 package reskillAssignmentOne;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Menu<path> {
 
-    ConsoleIO user = new ConsoleIO(scanner);
-    CSVFileHandling newFile = new CSVFileHandling();
-    String path;
+
+    CSVFileHandling newFile;
+    String filePath;
     Scanner scanner;
-    
+    ConsoleIO user = new ConsoleIO(scanner);
 
     ServiceSales service = new ServiceSales();
 
-    public Menu(String path, Scanner scanner){
-        this.path = path;
+    public Menu(String path, Scanner scanner) {
+        newFile = new CSVFileHandling();
+        this.filePath = path;
         this.scanner = scanner;
+        try{
+            newFile.readFile(filePath);
+        } catch (FileNotFoundException e){
+            user.logMessage("File not found!");
+        } catch (IOException e){
+            user.logMessage("Something went wrong!");
+        } catch (ParseException e){
+            user.logMessage("Parsing error.");
+        }
     }
 
 
