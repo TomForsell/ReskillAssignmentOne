@@ -22,6 +22,7 @@ public class CSVFileHandlingTest {
     private List<String[]> testOrderList;
     private final String[] line713 = {"Sub-Saharan Africa","Niger","Clothes","Offline","M","1/10/2012","201730287","2/19/2012","5330","109.28","35.84","582462.40","191027.20","391435.20"};;
 
+    private ServiceSales testServiceSales = new ServiceSales();
     @Before
     public void setUp() throws Exception {
          filePathCorrectFile= "C:\\Reskill\\salesrecords.txt";
@@ -82,4 +83,10 @@ public class CSVFileHandlingTest {
         }
     }
 
+    @Test
+    public void CSVFileHandlingTestReadFile()  throws FileNotFoundException, IOException,ParseException{
+        testCSVReader.readFile(filePathCorrectFile);
+        testServiceSales.getRegionsWithOrders();
+
+    }
 }

@@ -8,7 +8,7 @@ public class Menu<path> {
     CSVFileHandling newFile = new CSVFileHandling();
     String path;
     Scanner scanner;
-    newFile.readFile(path);
+    
 
     ServiceSales service = new ServiceSales();
 
