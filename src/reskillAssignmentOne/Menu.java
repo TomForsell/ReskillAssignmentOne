@@ -13,7 +13,7 @@ public class Menu<path> {
     Scanner scanner;
     ConsoleIO user = new ConsoleIO(scanner);
 
-    ServiceSales service = new ServiceSales();
+    ServiceSales service;
 
     public Menu(String path, Scanner scanner) {
         newFile = new CSVFileHandling();
@@ -28,6 +28,7 @@ public class Menu<path> {
         } catch (ParseException e){
             user.logMessage("Parsing error.");
         }
+        service = newFile.getMyServiceSales();
     }
 
 
