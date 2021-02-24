@@ -86,7 +86,7 @@ public class CSVFileHandlingTest {
     @Test
     public void CSVFileHandlingTestReadFile()  throws FileNotFoundException, IOException,ParseException{
         testCSVReader.readFile(filePathCorrectFile);
-        testServiceSales.getRegionsWithOrders();
+        //testServiceSales.getRegionsWithOrders();
 
     }
 }

@@ -23,10 +23,13 @@ public class Menu {
             newFile.readFile(filePath);
         } catch (FileNotFoundException e){
             user.logMessage("File not found!");
+            return;
         } catch (IOException e){
             user.logMessage("Something went wrong!");
+            return;
         } catch (ParseException e){
             user.logMessage("Parsing error.");
+            return;
         }
         service = newFile.getMyServiceSales();
     }
