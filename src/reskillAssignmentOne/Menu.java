@@ -68,7 +68,7 @@ public class Menu {
                     //service.createReport();
                     //service.printItems();
                     //service.printOrders();
-                    service.displayMostProfitableOrder();
+
 
                     break;
             }
@@ -84,7 +84,7 @@ public class Menu {
             switch (userChoice) {
 
                 case 1:
-                    service.displayMostProfitableOrder();
+
                     break;
 
                 case 2:
@@ -148,16 +148,21 @@ public class Menu {
     private void submenuOrder(){
         int userChoice;
         do {
-            userChoice = user.getInt("\n 1: Order info \n 2: Exit \n");
+            userChoice = user.getInt("\n 1: Order info \n 2: Find the most profitable order \n 3: Exit \n");
             switch (userChoice) {
 
                 case 1:
 
                     break;
 
+                case 2:
+
+                    service.displayMostProfitableOrder();
+                    break;
+
             }
         }
-        while (userChoice != 2);
+        while (userChoice != 3);
     }
 
     private void submenuItem(){
