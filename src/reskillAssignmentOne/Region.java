@@ -47,4 +47,11 @@ public class Region {
         return ordersPerRegion.get(orderID);
     }
 
+    @Override
+    public String toString() {
+        return "Region{" +
+                "name='" + name + '\'' +
+                ", ordersPerRegion=" + ordersPerRegion +
+                '}';
+    }
 }

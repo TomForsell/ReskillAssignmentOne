@@ -3,10 +3,8 @@ package reskillAssignmentOne;
 
 import lombok.Getter;
 import lombok.ToString;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Scanner;
+
+import java.util.*;
 
 
 @Getter
@@ -81,6 +79,29 @@ public class ServiceSales {
             regionRevenue = regionWithOrders.getRevenue();
         } 
         user.logMessage("The total revenue for " + regionWithOrders.getName() + " is " + regionRevenue);
+    }
+
+    public void mostSoldItem(){
+        Item item = mostCommon(allItems);
+        user.logMessage(item.toString());
+    }
+
+    public static <T> T mostCommon(List<T> list) {
+        Map<T, Integer> map = new HashMap<>();
+
+        for (T t : list) {
+            Integer val = map.get(t);
+            map.put(t, val == null ? 1 : val + 1);
+        }
+
+        Map.Entry<T, Integer> max = null;
+
+        for (Map.Entry<T, Integer> e : map.entrySet()) {
+            if (max == null || e.getValue() > max.getValue())
+                max = e;
+        }
+
+        return max.getKey();
     }
 
 }

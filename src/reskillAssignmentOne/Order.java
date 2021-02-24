@@ -1,7 +1,7 @@
 package reskillAssignmentOne;
 
 import lombok.Getter;
-import lombok.ToString;
+
 
 import java.util.Date;
 import java.util.HashMap;
@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-@ToString
 public class Order {
     private long orderId;
     private Date orderDate;
@@ -54,6 +53,17 @@ public class Order {
 
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", orderDate=" + orderDate +
+                ", shipDate=" + shipDate +
+                ", orderPriority=" + orderPriority +
+                ", country='" + country + '\'' +
+                ", channel='" + channel + '\'' +
+                ", itemsOnOrder=" + itemsOnOrder +
+                ", revenue=" + revenue +
+                '}';
+    }
 }
