@@ -144,12 +144,6 @@ public class ServiceSales {
             hm.put(t, (j == null) ? 1 : j + 1);
         }
 
-        // displaying the occurrence of elements in the arraylist
-        for (Map.Entry<String, Integer> val : hm.entrySet()) {
-            System.out.println("Element " + val.getKey() + " "
-                    + "occurs"
-                    + ": " + val.getValue() + " times");
-        }
         return (HashMap<String, Integer>) hm;
     }
 
@@ -164,6 +158,17 @@ public class ServiceSales {
     }
     public String getMostSoldItemToDisplay(){
         return mostSoldItemType(getCountItemTypes(allItems));
+
+    }
+
+    // 4.3 Display sales for Item types
+    public void displaySoldItems(){
+        HashMap<String,Integer> map = getCountItemTypes(allItems);
+            for (Map.Entry<String, Integer> val : map.entrySet()) {
+                user.logMessage(val.getKey() + " "
+                        + "sold"
+                        + ": " + val.getValue() + " times");
+            }
 
     }
 

@@ -30,6 +30,12 @@ public class ItemStatisticsTest {
             assertEquals(12, uniqueItems.size());
         }
 
+        @Test
+        public void findMostSoldItem_FoundCorrectItem(){
+            ArrayList<Item> list = testServiceSales.getAllItems();
+            HashMap<String,Integer> countItems = testServiceSales.getCountItemTypes(list);
+            assertEquals("Beverages", testServiceSales.mostSoldItemType(countItems));
+        }
 
     }
 

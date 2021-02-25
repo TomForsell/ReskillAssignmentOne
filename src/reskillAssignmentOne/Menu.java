@@ -48,11 +48,11 @@ public class Menu {
             switch (userChoice) {
 
                 case 1:
-                    submenuRegion();
+
                     break;
 
                 case 2:
-                    submenuCountry();
+
                     break;
 
                 case 3:
@@ -66,7 +66,7 @@ public class Menu {
                     break;
 
                 case 5:
-                    service.displayMostSoldItemType();
+
 
 
 
@@ -180,7 +180,7 @@ public class Menu {
     private void submenuItem(){
         int userChoice;
         do {
-            userChoice = user.getInt("\n 1: See all the item types ordered \n 2: Most sold item in all regions \n 3: Exit \n");
+            userChoice = user.getInt("\n 1: See all the item types ordered \n 2: Most sold item in all regions \n 3: Display sales statistics for item types \n 4: Exit \n");
             switch (userChoice) {
 
                 case 1:
@@ -192,9 +192,13 @@ public class Menu {
                     service.displayMostSoldItemType();
 
                     break;
+                case 3:
+                    service.displaySoldItems();
+
+                    break;
             }
         }
-        while (userChoice != 3);
+        while (userChoice != 4);
     }
 
 }
