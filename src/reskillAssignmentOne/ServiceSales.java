@@ -60,6 +60,10 @@ public class ServiceSales {
         return hashMapItems;
     }
 
+    public ArrayList<Item> getAllItems() {
+        return allItems;
+    }
+
     //Help methods
     public boolean isRegionAdded(Region regionToCheck){
         if (regionsWithOrders.containsKey(regionToCheck.getName())){
@@ -239,6 +243,25 @@ public class ServiceSales {
 
     public HashMap<Long, Order> getAllOrders() {
         return allOrders;
+    }
+
+    public HashMap<String, Integer> getCountItemTypes(ArrayList<Item> list){
+
+    Map<String, Integer> hm = new HashMap<>();
+
+        for (Item i : list) {
+            String t = i.getType();
+            Integer j = hm.get(t);
+            hm.put(t, (j == null) ? 1 : j + 1);
+        }
+
+    // displaying the occurrence of elements in the arraylist
+        for (Map.Entry<String, Integer> val : hm.entrySet()) {
+        System.out.println("Element " + val.getKey() + " "
+                + "occurs"
+                + ": " + val.getValue() + " times");
+         }
+        return (HashMap<String, Integer>) hm;
     }
 
 

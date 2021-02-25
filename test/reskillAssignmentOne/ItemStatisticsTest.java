@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
@@ -27,6 +28,13 @@ public class ItemStatisticsTest {
         public void getAmountOfUniqueItems() throws FileNotFoundException, IOException, ParseException {
             HashMap<String, Item> uniqueItems = testServiceSales.getHashMapItems();
             assertEquals(12, uniqueItems.size());
+        }
+
+        @Test
+        public void getMostCommonItem(){
+            ArrayList<Item> testList = testServiceSales.getAllItems();
+            assertEquals("Cereal", testServiceSales.mostCommon(testList).getType());
+
         }
 
 

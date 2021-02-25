@@ -66,6 +66,7 @@ public class Menu {
                     break;
 
                 case 5:
+                    service.getCountItemTypes(service.getAllItems());
 
 
 
