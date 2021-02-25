@@ -19,8 +19,6 @@ public class ReportContent {
         this.totalUnitsSold = " \nTotal units sold:" + reportService.getTotalUnitsSold();
         this.averageUnitsSoldPerOrder =  "\nAverage units sold per order:" + reportService.getAverageUnitsSoldPerOrder();
         this.theMostSoldItem = "The most sold item type: " + reportService.getMostSoldItemToDisplay();
-
-
     }
 
     public String getMostProfitableOrder() {
@@ -29,12 +27,11 @@ public class ReportContent {
 
     @Override
     public String toString() {
-        return "ReportContent{" +
-                "mostProfitableOrder='" + mostProfitableOrder + '\'' +
-                ", totalRevenueForAllOrders='" + totalRevenueForAllOrders + '\'' +
-                ", totalUnitsSold='" + totalUnitsSold + '\'' +
-                ", averageUnitsSoldPerOrder='" + averageUnitsSoldPerOrder + '\'' +
-                ", theMostSoldItem='" + theMostSoldItem + '\'' +
-                '}';
+        return "ReportContent\n" +
+                "" + mostProfitableOrder + " "  +
+                "\n" + totalRevenueForAllOrders  +
+                "\n" + totalUnitsSold +
+                "\n" + averageUnitsSoldPerOrder + "\n" +
+                "\n" + theMostSoldItem;
     }
 }
