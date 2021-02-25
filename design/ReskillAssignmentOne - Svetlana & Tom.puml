@@ -60,4 +60,15 @@ ServiceSales --|> ReportContent
 ServiceSales --|> ConsoleIO
 Order --|> ServiceSales
 Channel --|> ServiceSales
+
+
+
+Menu <|--|> Channel
+Menu <|--|> Region
+Menu <|--|> Order
+Menu <|--|> Item
+menu <|--|> ServiceSales
+
+
+
 @enduml
