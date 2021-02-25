@@ -94,9 +94,10 @@ public class CSVFileIOTest {
     public void CSVFileIOsaveReportTest()throws FileNotFoundException, IOException,ParseException{
         testOrderList=testCSVReader.readFile(filePathCorrectFile);
 
-        ReportContent newReport = new ReportContent(testCSVReader.getMyServiceSales());
+        ReportContent myReport = new ReportContent(testCSVReader.getMyServiceSales());
         testCSVReader.saveReport(filePathForReport);
-        System.out.println(newReport.getMostProfitableOrder());
+        System.out.println(myReport.toString());
+        //System.out.println(newReport.getMostProfitableOrder());
 
     }
 }

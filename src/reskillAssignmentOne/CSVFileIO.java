@@ -33,7 +33,7 @@ public class CSVFileIO implements FileIO {
         FileWriter fileWriter = new FileWriter(reportFilePath);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.print("" + myReportContent.toString());
-        printWriter.printf("test of formatted tesxt is %s and number %d ", "format", 1000);
+        //printWriter.printf("test of formatted tesxt is %s and number %d ", "format", 1000);
         printWriter.close();
     }
 

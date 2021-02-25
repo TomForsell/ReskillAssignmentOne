@@ -162,6 +162,10 @@ public class ServiceSales {
         user.logMessage("The most sold item type: " + itemToDisplay);
 
     }
+    public String getMostSoldItemToDisplay(){
+        return mostSoldItemType(getCountItemTypes(allItems));
+
+    }
 
     public void displayRegionInfo(){
         Set <String> regions = (Set<String>) regionsWithOrders.keySet();
