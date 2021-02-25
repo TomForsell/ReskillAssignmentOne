@@ -19,6 +19,7 @@ public class CSVFileIOTest {
     private  String filePathIncorrectFormat;
     private String filePathOneLineCorrectFormat;
     private CSVFileIO testCSVReader;
+    private String filePathForReport;
     private List<String[]> testOrderList;
     private final String[] line713 = {"Sub-Saharan Africa","Niger","Clothes","Offline","M","1/10/2012","201730287","2/19/2012","5330","109.28","35.84","582462.40","191027.20","391435.20"};;
 
@@ -29,8 +30,9 @@ public class CSVFileIOTest {
         filePathEmptyFile = "C:\\Reskill\\emptyFile.txt";
         filePathOneLineCorrectFormat = "C:\\Reskill\\oneLineCorrectFormat.txt";
         filePathIncorrectFormat = "C:\\Reskill\\inCorrectFormat.txt";
+        filePathForReport = "C:\\Reskill\\Report.txt";
 
-         testCSVReader = new CSVFileIO();
+        testCSVReader = new CSVFileIO();
          testOrderList = new ArrayList<>();
     }
     @Test
@@ -87,13 +89,13 @@ public class CSVFileIOTest {
     public void CSVFileHandlingTestReadFile()  throws FileNotFoundException, IOException,ParseException{
         testCSVReader.readFile(filePathCorrectFile);
         //testServiceSales.getRegionsWithOrders();
-
     }
     @Test
     public void CSVFileIOsaveReportTest()throws FileNotFoundException, IOException,ParseException{
         testOrderList=testCSVReader.readFile(filePathCorrectFile);
 
         ReportContent newReport = new ReportContent(testCSVReader.getMyServiceSales());
+        testCSVReader.saveReport(filePathForReport);
         System.out.println(newReport.getMostProfitableOrder());
 
     }
