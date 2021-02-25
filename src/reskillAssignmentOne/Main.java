@@ -3,6 +3,7 @@ package reskillAssignmentOne;
 import java.util.Scanner;
 public class Main {
 
+// We use hard coded paths while we are working
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
