@@ -17,19 +17,7 @@ public class CSVFileIO implements FileIO {
     private List<String[]> orderlist = new ArrayList<>();
     private ServiceSales myServiceSales = new ServiceSales();
 
-    private long orderId;
-    private Date orderDate;
-    private Date shipDate;
-    private char orderPriority;
-    private String country;
-    private String channel;
-    private String itemType;
-    private double unitPrice;
-    private double unitCost;
-    private int unitsSold;
-    private String region;
-    private double revenue;
-
+    private DataHandling myDataHandling = new DataHandling();
 
     public List readFile(String filePath) throws FileNotFoundException,IOException,ParseException{
         //int counterForSkippingFirstEntry=0;
@@ -49,8 +37,8 @@ public class CSVFileIO implements FileIO {
             while ((line = br.readLine()) != null) {
                 csvValues = line.split(",");
                 if(!firstEntry) {
-                    parseStrings();
-                    populateObjects();
+                    myDataHandling.parseStrings(csvValues);
+                    myDataHandling.populateObjects(csvValues);
                 }
                 firstEntry =false;
                  orderlist.add(csvValues);
@@ -62,38 +50,11 @@ public class CSVFileIO implements FileIO {
         }
     }
 
-    public void populateObjects(){
-        Item newItem = new Item(itemType,unitPrice,unitCost);
-        Order newOrder = new Order(orderId,orderDate,shipDate,orderPriority,newItem,unitsSold,region,country,channel, revenue);
-        myServiceSales.addItem(newItem);
-        myServiceSales.addOrder(newOrder);
-        myServiceSales.setItemIntoHashMap(itemType, newItem);
-        myServiceSales.addOrderToRegion(region, newOrder);
 
-    }
-    public void parseStrings() throws ParseException{
-       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-       DateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
-       region = csvValues[0];
-       country = csvValues[1];
-       itemType = csvValues[2];
-       channel = csvValues[3];
-       orderPriority = csvValues[4].charAt(0);
-       orderDate = format.parse(csvValues[5]);
-       orderId = parseLong(csvValues[6]);
-       shipDate = format.parse(csvValues[7]);
-       unitsSold = parseInt(csvValues[8]);
-       unitPrice = parseDouble(csvValues[9]);
-       unitCost = parseDouble(csvValues[10]);
-       revenue = parseDouble(csvValues[11]);
-  }
 
     public ServiceSales getMyServiceSales() {
         return myServiceSales;
     }
-
-
-
 }
 
 
