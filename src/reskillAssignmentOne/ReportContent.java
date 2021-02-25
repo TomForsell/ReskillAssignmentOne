@@ -15,4 +15,11 @@ public class ReportContent {
     public String getMostProfitableOrder() {
         return mostProfitableOrder;
     }
+
+    @Override
+    public String toString() {
+        return "ReportContent{" +
+                "mostProfitableOrder='" + mostProfitableOrder + '\'' +
+                '}';
+    }
 }
