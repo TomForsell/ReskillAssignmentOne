@@ -2,13 +2,9 @@
 package reskillAssignmentOne;
 
 import java.io.*;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 
@@ -17,7 +13,7 @@ public class CSVFileIO implements FileIO {
     private List<String[]> orderlist = new ArrayList<>();
     private ServiceSales myServiceSales = new ServiceSales();
 
-    private DataHandling myDataHandling = new DataHandling();
+    private DataProcessing myDataProcessing = new DataProcessing();
 
     public List readFile(String filePath) throws FileNotFoundException,IOException,ParseException{
         //int counterForSkippingFirstEntry=0;
@@ -45,8 +41,8 @@ public class CSVFileIO implements FileIO {
             while ((line = br.readLine()) != null) {
                 csvValues = line.split(",");
                 if(!firstEntry) {
-                    myDataHandling.parseStrings(csvValues);
-                    myDataHandling.populateObjects(csvValues,myServiceSales);
+                    myDataProcessing.parseStrings(csvValues);
+                    myDataProcessing.populateObjects(csvValues,myServiceSales);
                 }
                 firstEntry =false;
                  orderlist.add(csvValues);
