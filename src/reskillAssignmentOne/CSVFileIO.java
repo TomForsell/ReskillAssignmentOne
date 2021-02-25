@@ -28,6 +28,9 @@ public class CSVFileIO implements FileIO {
         }
         return orderlist;
     }
+    public void saveReport(){
+
+    }
 
     private void readBuffer(String filePath, boolean firstEntry) throws ParseException, IOException {
         String line="";
@@ -49,9 +52,6 @@ public class CSVFileIO implements FileIO {
             throw new IOException();
         }
     }
-
-
-
     public ServiceSales getMyServiceSales() {
         return myServiceSales;
     }
