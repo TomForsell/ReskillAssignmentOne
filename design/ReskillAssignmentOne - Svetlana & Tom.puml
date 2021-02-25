@@ -43,4 +43,5 @@ DataProcessing --|> Item
 DataProcessing --|> Channel
 ServiceSales --|> ReportContent
 ServiceSales --|> ConsoleIO
+Order --|> ServiceSales
 @enduml

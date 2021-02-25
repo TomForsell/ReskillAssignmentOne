@@ -179,15 +179,15 @@ public class ServiceSales {
         }
 
     }
-    public double getTotalOrderRevenue(){
-        double totalRevenue=0;
+    public long getTotalOrderRevenue(){
+        long totalRevenue=0;
         Order testOrder;
         allOrders = getAllOrders();
         ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
 
         for (int i = 0;i<orderCollection.size();i++){
             testOrder = orderCollection.get(i);
-            totalRevenue  = totalRevenue+testOrder.revenue;
+            totalRevenue  = (long) (totalRevenue+testOrder.revenue);
 
         }
         return totalRevenue;
