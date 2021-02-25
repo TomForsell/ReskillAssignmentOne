@@ -59,6 +59,10 @@ public class Order {
     public double getProfitForOrder(){
         return unitsSold * itemtype.getProfitPerItemType();
     }
+    public int getUnitsSold() {
+        return unitsSold;
+    }
+
 
     @Override
     public String toString() {

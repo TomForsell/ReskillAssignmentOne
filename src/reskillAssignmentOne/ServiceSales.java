@@ -144,6 +144,90 @@ public class ServiceSales {
         }
 
     }
+    public double getTotalOrderRevenue(){
+        double totalRevenue=0;
+        Order testOrder;
+        allOrders = getAllOrders();
+        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
+
+        for (int i = 0;i<orderCollection.size();i++){
+            testOrder = orderCollection.get(i);
+            totalRevenue  = totalRevenue+testOrder.revenue;
+
+        }
+        return totalRevenue;
+    }/*
+    public double getTotalOrderRevenue(){
+        double totalRevenue=0;
+        Order testOrder;
+        allOrders = getAllOrders();
+        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
+
+        for (int i = 0;i<orderCollection.size();i++){
+            testOrder = orderCollection.get(i);
+            totalRevenue  = totalRevenue+testOrder.revenue;
+        }
+        return totalRevenue;
+    }
+    */
+
+    public int getTotalUnitsSold(){
+        int totalUnitsSold=0;
+        Order testOrder;
+        allOrders = getAllOrders();
+        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
+
+        for (int i = 0;i<orderCollection.size();i++){
+            testOrder = orderCollection.get(i);
+            totalUnitsSold  = totalUnitsSold+testOrder.getUnitsSold();
+        }
+        return totalUnitsSold;
+    }
+    public double getAverageUnitsSoldPerOrder(){
+        double totalAverageSoldPerOrder=0;
+        Order testOrder;
+        allOrders = getAllOrders();
+        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
+        totalAverageSoldPerOrder=(getTotalUnitsSold()/allOrders.size());
+        return totalAverageSoldPerOrder;
+    }
+
+  /*  public int getAverageUnitPrice(){
+        double averageUnitsPrice=0;
+        double totalUnitsPrice=0;
+        Order testOrder;
+        allOrders = getAllOrders();
+        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
+
+        for (int i = 0;i<orderCollection.size();i++){
+            testOrder = orderCollection.get(i);
+            totalUnitsPrice  = totalUnitsPrice+testOrder.getO
+        }
+        return totalUnitsSold;
+    }*/
+
+    /*
+    public double getTotalUnitsCost(){
+        double totalUnitsCost=0;
+
+        Order testOrder;
+        allOrders = getAllOrders();
+        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
+
+        for (int i = 0;i<orderCollection.size();i++){
+            testOrder = orderCollection.get(i);
+            totalUnitsCost  = totalUnitsCost+testOrder.getUnitsCost();
+        }
+        return totalUnitsCost;
+    }*/
+
+
+
+
+    public HashMap<Long, Order> getAllOrders() {
+        return allOrders;
+    }
+
 
 
 
