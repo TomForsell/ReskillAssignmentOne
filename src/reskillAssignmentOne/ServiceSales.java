@@ -85,7 +85,12 @@ public class ServiceSales {
     public void displayOrder(){
         long orderId = user.getLong("Type an order ID: ");
         Order orderFound = findOrder(orderId);
-        user.logMessage(orderFound.toString());
+        if(orderFound == null){
+            user.logMessage("This order is not found in the system.");
+        } else{
+            user.logMessage(orderFound.toString());
+        }
+
     }
 
     public Order findOrder(long orderId){
