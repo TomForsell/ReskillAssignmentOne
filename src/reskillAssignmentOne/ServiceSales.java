@@ -98,6 +98,12 @@ public class ServiceSales {
     public void displayTotalRevenueForOrders(){
         user.logMessage(" \nTotal revenue for all orders " + getTotalOrderRevenue());
     }
+    public void displayTotalUnitsSold(){
+        user.logMessage(" \nTotal units sold:" + getTotalUnitsSold());
+    }
+    public void displayAverageUnitsSoldPerOrder(){
+        user.logMessage(" \nAverage units sold per order:" + getAverageUnitsSoldPerOrder());
+    }
     //Printing all the orders in the system
     public void printOrders(){
         Collection<Order> orders = allOrders.values();
