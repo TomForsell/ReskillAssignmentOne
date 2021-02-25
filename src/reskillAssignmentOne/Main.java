@@ -1,17 +1,12 @@
 package reskillAssignmentOne;
 
-import java.util.Scanner;
+
 public class Main {
+
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Give me file path: ");
-        //String filePath ="/Users/svetlanahaugland/Desktop/SalesRecords.csv" ;//scanner.next();
-
-        String filePath ="C:\\Reskill\\salesrecords.txt" ;//scanner.next();
-
-        Menu menu = new Menu(filePath);
+        Menu menu = new Menu();
         menu.menuStart();
 
 

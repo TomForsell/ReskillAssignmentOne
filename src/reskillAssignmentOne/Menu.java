@@ -8,17 +8,24 @@ import java.util.Scanner;
 public class Menu {
 
 
-    CSVFileIO newFile;
-    String filePath;
-    Scanner scanner = new Scanner(System.in);
-    ConsoleIO user = new ConsoleIO(scanner);
+    private CSVFileIO newFile;
+    private String filePath;
+    //private final String SAVED_REPORT_PATH = "C:\\Reskill\\Report.txt";
+    private final String SAVED_REPORT_PATH = "/Users/svetlanahaugland/Desktop/Report.txt";
+    private Scanner scanner = new Scanner(System.in);
+    private ConsoleIO user = new ConsoleIO(scanner);
 
     ServiceSales service;
 
-    public Menu(String path) {
+    public Menu()  {
         newFile = new CSVFileIO();
-        this.filePath = path;
-        //this.scanner = scanner;
+        filePath = user.getString("Give me path:");
+        //filePath ="/Users/svetlanahaugland/Desktop/SalesRecords.csv" ;
+        //filePath ="C:\\Reskill\\salesrecords.txt" ;//scanner.next();
+
+    }
+
+    public void menuStart() {
         try{
             newFile.readFile(filePath);
         } catch (FileNotFoundException e){
@@ -32,10 +39,6 @@ public class Menu {
             return;
         }
         service = newFile.getMyServiceSales();
-
-    }
-
-    public void menuStart() {
 
         int userChoice;
         System.out.println("\n WELCOME\n -------------------------");
@@ -66,8 +69,8 @@ public class Menu {
                     CSVFileIO reportIO = new CSVFileIO();
                     try {
 
-                        reportIO.saveReport("C:\\Reskill\\Report.txt", service);
-                        user.logMessage("Report Saved");
+                        reportIO.saveReport(SAVED_REPORT_PATH, service);
+                        user.logMessage("Report Saved: " + SAVED_REPORT_PATH );
 
                     }
                     catch (IOException IO){

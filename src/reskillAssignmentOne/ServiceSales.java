@@ -54,8 +54,7 @@ public class ServiceSales {
     }
 
     //Getters
-
-
+    // Need this to be able to see unique item types
     public HashMap<String, Item> getHashMapItems() {
         return hashMapItems;
     }
@@ -76,16 +75,21 @@ public class ServiceSales {
         return false;
     }
 
-
-
-
     // Functions from menu
+
+    // 1. Not implemented yet
+    // 2. Not implemented yet
 
     //3.1 See order details
     public void displayOrder(){
         long orderId = user.getLong("Type an order ID: ");
         Order orderFound = findOrder(orderId);
-        user.logMessage(orderFound.toString());
+        if(orderFound == null){
+            user.logMessage("This order is not found in the system.");
+        } else{
+            user.logMessage(orderFound.toString());
+        }
+
     }
 
     public Order findOrder(long orderId){
@@ -123,8 +127,47 @@ public class ServiceSales {
             user.logMessage(o.toString());
         }
 
-
     }
+
+    // 3.3 See total revenue
+    public long getTotalOrderRevenue(){
+        long totalRevenue=0;
+        Order testOrder;
+        allOrders = getAllOrders();
+        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
+
+        for (int i = 0;i<orderCollection.size();i++){
+            testOrder = orderCollection.get(i);
+            totalRevenue  = (long) (totalRevenue+testOrder.revenue);
+
+        }
+        return totalRevenue;
+    }
+
+    //3.4
+    public int getTotalUnitsSold(){
+        int totalUnitsSold=0;
+        Order testOrder;
+        allOrders = getAllOrders();
+        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
+
+        for (int i = 0;i<orderCollection.size();i++){
+            testOrder = orderCollection.get(i);
+            totalUnitsSold  = totalUnitsSold+testOrder.getUnitsSold();
+        }
+        return totalUnitsSold;
+    }
+
+    //3.5
+    public double getAverageUnitsSoldPerOrder(){
+        double totalAverageSoldPerOrder=0;
+        Order testOrder;
+        allOrders = getAllOrders();
+        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
+        totalAverageSoldPerOrder=(getTotalUnitsSold()/allOrders.size());
+        return totalAverageSoldPerOrder;
+    }
+
 
     // 4.1 See all the item types ordered
     public void getItemTypeInfo(){
@@ -179,119 +222,6 @@ public class ServiceSales {
         }
 
     }
-    public long getTotalOrderRevenue(){
-        long totalRevenue=0;
-        Order testOrder;
-        allOrders = getAllOrders();
-        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
-
-        for (int i = 0;i<orderCollection.size();i++){
-            testOrder = orderCollection.get(i);
-            totalRevenue  = (long) (totalRevenue+testOrder.revenue);
-
-        }
-        return totalRevenue;
-    }/*
-    public double getTotalOrderRevenue(){
-        double totalRevenue=0;
-        Order testOrder;
-        allOrders = getAllOrders();
-        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
-
-        for (int i = 0;i<orderCollection.size();i++){
-            testOrder = orderCollection.get(i);
-            totalRevenue  = totalRevenue+testOrder.revenue;
-        }
-        return totalRevenue;
-    }
-    */
-
-    public int getTotalUnitsSold(){
-        int totalUnitsSold=0;
-        Order testOrder;
-        allOrders = getAllOrders();
-        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
-
-        for (int i = 0;i<orderCollection.size();i++){
-            testOrder = orderCollection.get(i);
-            totalUnitsSold  = totalUnitsSold+testOrder.getUnitsSold();
-        }
-        return totalUnitsSold;
-    }
-    public double getAverageUnitsSoldPerOrder(){
-        double totalAverageSoldPerOrder=0;
-        Order testOrder;
-        allOrders = getAllOrders();
-        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
-        totalAverageSoldPerOrder=(getTotalUnitsSold()/allOrders.size());
-        return totalAverageSoldPerOrder;
-    }
-
-  /*  public int getAverageUnitPrice(){
-        double averageUnitsPrice=0;
-        double totalUnitsPrice=0;
-        Order testOrder;
-        allOrders = getAllOrders();
-        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
-
-        for (int i = 0;i<orderCollection.size();i++){
-            testOrder = orderCollection.get(i);
-            totalUnitsPrice  = totalUnitsPrice+testOrder.getO
-        }
-        return totalUnitsSold;
-    }*/
-
-    /*
-    public double getTotalUnitsCost(){
-        double totalUnitsCost=0;
-
-        Order testOrder;
-        allOrders = getAllOrders();
-        ArrayList<Order> orderCollection = new ArrayList<>(allOrders.values());
-
-        for (int i = 0;i<orderCollection.size();i++){
-            testOrder = orderCollection.get(i);
-            totalUnitsCost  = totalUnitsCost+testOrder.getUnitsCost();
-        }
-        return totalUnitsCost;
-    }*/
-
-
-
-
-
-
-
-
-
-
 
 }
-/*
-    Functions: vi må ha funksjosjer som returnerer resultat som vi skal sende til consoleIO eller
-    til Logger for å bygge fil.
-1. Statics per Region
-1.1 Revenue (velge en region)
-1.2 Cost
-1.3 Profit
-1.4 Most sold items
-1.5 Most used channel
 
-2. Statistics per Country
-1.1 Revenue
-1.2 Cost
-1.3 Profit
-1.4 Mest solgt items
-1.5 Mest brukt kanal
-
-3. Order Statics OK Ferdig
-3.1 Order info (tar imot OrederID)
-3.2 Most profitable Order
-
-4. Item Type ifo  OK Ferdig
-4.1 Item type info (tar imot type og printer ut info)
-4.2 Mest solgt item type in all regions and channels (plukke ut en item type som forekommer flest) OK.
-
-5. Print rapport
-
-     */

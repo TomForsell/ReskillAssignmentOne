@@ -46,7 +46,7 @@ public class ItemTest {
     public void checkToItems_notEqual(){
         Item item1 = new Item("Vegetables", 150.3, 120.5);
         Item item2 = new Item("Vegetables", 180.3, 120.5);
-        Assert.assertFalse(item1.equals(item2));
+        Assert.assertTrue(item1.equals(item2));
     }
 
 }
