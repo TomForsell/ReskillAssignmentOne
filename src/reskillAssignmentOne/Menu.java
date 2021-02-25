@@ -17,10 +17,15 @@ public class Menu {
 
     ServiceSales service;
 
-    public Menu(String path) {
+    public Menu()  {
         newFile = new CSVFileIO();
-        this.filePath = path;
-        //this.scanner = scanner;
+        //filePath = user.getString("Give me path:");
+        filePath ="/Users/svetlanahaugland/Desktop/SalesRecords.csv" ;
+        //filePath ="C:\\Reskill\\salesrecords.txt" ;//scanner.next();
+
+    }
+
+    public void menuStart() {
         try{
             newFile.readFile(filePath);
         } catch (FileNotFoundException e){
@@ -34,10 +39,6 @@ public class Menu {
             return;
         }
         service = newFile.getMyServiceSales();
-
-    }
-
-    public void menuStart() {
 
         int userChoice;
         System.out.println("\n WELCOME\n -------------------------");
