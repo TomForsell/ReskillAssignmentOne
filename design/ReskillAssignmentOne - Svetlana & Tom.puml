@@ -37,7 +37,9 @@ class ServiceSales{
 CSVFileIO <|-- ReportContent
 CSVFileIO <|--|> DataProcessing
 DataProcessing --|> Order
-DataProcessing --|> ServiceSales
+Item --|> ServiceSales
+Region --|> ServiceSales
+
 DataProcessing --|> Region
 DataProcessing --|> Item
 DataProcessing --|> Channel
