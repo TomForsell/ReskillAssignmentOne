@@ -1,0 +1,272 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "reskillAssignmentOne.Order"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1583048453 { 
+   	label=reskillAssignmentOne
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   CSVFileIO1583048453[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CSVFileIO</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   csvValues: String[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   myDataHandling: DataHandling [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   myServiceSales: ServiceSales [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderlist: List&lt;String[]&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- readBuffer(filePath: String, firstEntry: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readFile(filePath: String): List</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveReport(reportFilePath: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Channel1583048453[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Channel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   channelType: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   order: Order [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Item1583048453[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Item</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   type: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unitCost: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unitPrice: double [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Menu1583048453[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Menu</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   filePath: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   newFile: CSVFileIO [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   scanner: Scanner [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   service: ServiceSales [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   user: ConsoleIO [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ menuStart()</TD></TR>
+<TR><TD ALIGN="LEFT" >- submenuCountry()</TD></TR>
+<TR><TD ALIGN="LEFT" >- submenuItem()</TD></TR>
+<TR><TD ALIGN="LEFT" >- submenuOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >- submenuRegion()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Order1583048453[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Order</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   channel: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   country: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   itemtype: Item [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderDate: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderId: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   orderPriority: char [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   region: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   revenue: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   shipDate: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unitsSold: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Region1583048453[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Region</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ordersPerRegion: HashMap&lt;Long, Order&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addOrder(order: Order)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findOrderInRegion(orderID: long): Order</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReportContent1583048453[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReportContent</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   averageUnitsSoldPerOrder: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mostProfitableOrder: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   order: Order [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   reportService: ServiceSales [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   theMostSoldItem: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   totalRevenueForAllOrders: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   totalUnitsSold: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ServiceSales1583048453[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ServiceSales</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   allItems: ArrayList&lt;Item&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   allOrders: HashMap&lt;Long, Order&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   hashMapItems: HashMap&lt;String, Item&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   regionsWithOrders: HashMap&lt;String, ArrayList&lt;Order&gt;&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   scanner: Scanner [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   user: ConsoleIO [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addItem(itemToAdd: Item)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addOrder(newOrder: Order)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addOrderToRegion(regionName: String, order: Order)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayAverageUnitsSoldPerOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayMostProfitableOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayMostSoldItemType()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayOrder()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayRegionInfo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displaySoldItems()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayTotalRevenueForOrders()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayTotalUnitsSold()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findMaxOrder(): Order</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findOrder(orderId: long): Order</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCountItemTypes(list: ArrayList&lt;Item&gt;): HashMap&lt;String, Integer&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getItemTypeInfo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isRegionAdded(regionToCheck: Region): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mostSoldItemType(countMap: HashMap&lt;String, Integer&gt;): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printOrders()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+CSVFileIO1583048453 -> ServiceSales1583048453[label="myServiceSales
+[0..1]"];
+Channel1583048453 -> Order1583048453[label="order
+[0..1]"];
+Menu1583048453 -> CSVFileIO1583048453[label="newFile
+[0..1]"];
+Menu1583048453 -> ServiceSales1583048453[label="service
+[0..1]"];
+Order1583048453 -> Item1583048453[label="itemtype
+[0..1]"];
+Region1583048453 -> Order1583048453[label="ordersPerRegion
+[0..*]"];
+ReportContent1583048453 -> Order1583048453[label="order
+[0..1]"];
+ReportContent1583048453 -> ServiceSales1583048453[label="reportService
+[0..1]"];
+ServiceSales1583048453 -> Order1583048453[label="allOrders
+[0..*]"];
+ServiceSales1583048453 -> Order1583048453[label="regionsWithOrders
+[0..*]"];
+    
+}
+@enduml

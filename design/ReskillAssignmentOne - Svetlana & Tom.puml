@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Channel
+class ConsoleIO
+class CSVFileIO implements FileIO
+class DataHandling
+interface FileIO{
+List ReadFile()
+void saveReport
+}
+
+interface IO
+class Item
+class Menu
+class Order
+class Region
+class ReportContent
+class ServiceSales
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+CSVFileIO <|-- ReportContent
+CSVFileIO <|--|> DataHandling
+
+
+@enduml
