@@ -71,12 +71,12 @@ public class ServiceSales {
 
     //3.1 See order details
     public void displayOrder(){
-        Order orderFound = findOrder();
+        long orderId = user.getLong("Type an order ID: ");
+        Order orderFound = findOrder(orderId);
         user.logMessage(orderFound.toString());
     }
 
-    public Order findOrder(){
-        long orderId = user.getLong("Type an order ID: ");
+    public Order findOrder(long orderId){
         if(allOrders.isEmpty()){
             return null;
         } else{

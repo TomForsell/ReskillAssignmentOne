@@ -174,7 +174,7 @@ public class Menu {
 
             }
         }
-        while (userChoice != 5);
+        while (userChoice != 6);
     }
 
     private void submenuItem(){

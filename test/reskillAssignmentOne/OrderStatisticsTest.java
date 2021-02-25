@@ -6,7 +6,11 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
@@ -21,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Locale;
 
 import static org.junit.Assert.*;
 
@@ -32,7 +37,7 @@ import static org.junit.Assert.*;
         public void setUp() throws Exception {
             testServiceSales = new ServiceSales();
             testCSVFilehandling = new CSVFileHandling();
-            testCSVFilehandling.readFile("C:\\Reskill\\salesrecords.txt");
+            testCSVFilehandling.readFile("/Users/svetlanahaugland/Desktop/SalesRecords.csv");//"C:\\Reskill\\salesrecords.txt");
             testServiceSales = testCSVFilehandling.getMyServiceSales();
         }
 
@@ -75,5 +80,30 @@ import static org.junit.Assert.*;
             //391202611,56
         }
 
+        @Test
+        public void seeOrderDetails(){
+            HashMap<Long,Order> testAllOrders = testServiceSales.getAllOrders();
+
+
+
+        }
+
+
+       @Test
+        public void findOrder_orderFound() throws ParseException {
+           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+           DateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+           HashMap<Long, Order> testAllOrders = testServiceSales.getAllOrders();
+           assertEquals(403961122, testServiceSales.findOrder(403961122).getOrderId());
+
+
+       }
+
+
+        @Test
+        public void getMostProfitableOrder() throws FileNotFoundException, IOException, ParseException {
+            HashMap<Long, Order> testAllOrders = testServiceSales.getAllOrders();
+            assertEquals(403961122, testServiceSales.findMaxOrder().getOrderId(), 0.002);
+        }
     }
 
