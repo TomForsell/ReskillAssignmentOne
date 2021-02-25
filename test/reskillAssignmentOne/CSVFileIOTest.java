@@ -12,13 +12,13 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVFileHandlingTest {
+public class CSVFileIOTest {
 
     private String filePathCorrectFile;
     private String filePathEmptyFile;
     private  String filePathIncorrectFormat;
     private String filePathOneLineCorrectFormat;
-    private CSVFileHandling testCSVReader;
+    private CSVFileIO testCSVReader;
     private List<String[]> testOrderList;
     private final String[] line713 = {"Sub-Saharan Africa","Niger","Clothes","Offline","M","1/10/2012","201730287","2/19/2012","5330","109.28","35.84","582462.40","191027.20","391435.20"};;
 
@@ -30,7 +30,7 @@ public class CSVFileHandlingTest {
         filePathOneLineCorrectFormat = "C:\\Reskill\\oneLineCorrectFormat.txt";
         filePathIncorrectFormat = "C:\\Reskill\\inCorrectFormat.txt";
 
-         testCSVReader = new CSVFileHandling();
+         testCSVReader = new CSVFileIO();
          testOrderList = new ArrayList<>();
     }
     @Test

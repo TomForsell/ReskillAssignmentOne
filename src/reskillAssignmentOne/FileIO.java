@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
-public interface FileHandling {
+public interface FileIO {
     List readFile(String filePath) throws FileNotFoundException, IOException, ParseException;
 
 }
