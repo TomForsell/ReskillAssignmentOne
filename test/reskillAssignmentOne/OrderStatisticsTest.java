@@ -19,7 +19,8 @@ public class OrderStatisticsTest {
         public void setUp() throws Exception {
             testServiceSales = new ServiceSales();
             testCSVFilehandling = new CSVFileIO();
-            testCSVFilehandling.readFile("C:\\Reskill\\salesrecords.txt");
+            //testCSVFilehandling.readFile( "C:\\Reskill\\salesrecords.txt");
+            testCSVFilehandling.readFile("/Users/svetlanahaugland/Desktop/SalesRecords.csv");
             testServiceSales = testCSVFilehandling.getMyServiceSales();
         }
         @Test
@@ -65,6 +66,15 @@ public class OrderStatisticsTest {
         public void getAverageProfitPerOrder(){
             //391202611,56
         }
+
+        @Test
+        public void fidOrder_OrderFound(){
+            HashMap<Long, Order> testAllOrders = testServiceSales.getAllOrders();
+            assertEquals(686800706, testServiceSales.findOrder(686800706).getOrderId());
+        }
+
+
+
 
     }
 
