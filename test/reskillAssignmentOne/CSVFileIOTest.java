@@ -89,4 +89,12 @@ public class CSVFileIOTest {
         //testServiceSales.getRegionsWithOrders();
 
     }
+    @Test
+    public void CSVFileIOsaveReportTest()throws FileNotFoundException, IOException,ParseException{
+        testOrderList=testCSVReader.readFile(filePathCorrectFile);
+
+        ReportContent newReport = new ReportContent(testCSVReader.getMyServiceSales());
+        System.out.println(newReport.getMostProfitableOrder());
+
+    }
 }

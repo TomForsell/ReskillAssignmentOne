@@ -6,10 +6,13 @@ public class ReportContent {
     //displayMostProfitableOrder
     private Order order;
 
-    public ReportContent() {
-        this.reportService = new ServiceSales();
-        this.order = reportService.findMaxOrder();
 
-        this.mostProfitableOrder = (order.toString() +  "\nProfit for this order:"  + order.getProfitForOrder());
+    public ReportContent(ServiceSales reportService) {
+        this.order = reportService.findMaxOrder();
+        this.mostProfitableOrder = ("\nMost Profitable order, OrderID:" + order.getOrderId() +" with profit:" + order.getProfitForOrder());
+    }
+
+    public String getMostProfitableOrder() {
+        return mostProfitableOrder;
     }
 }
