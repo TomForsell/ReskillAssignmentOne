@@ -19,8 +19,8 @@ public class Menu {
 
     public Menu()  {
         newFile = new CSVFileIO();
-        //filePath = user.getString("Give me path:");
-        filePath ="/Users/svetlanahaugland/Desktop/SalesRecords.csv" ;
+        filePath = user.getString("Give me path:");
+        //filePath ="/Users/svetlanahaugland/Desktop/SalesRecords.csv" ;
         //filePath ="C:\\Reskill\\salesrecords.txt" ;//scanner.next();
 
     }
