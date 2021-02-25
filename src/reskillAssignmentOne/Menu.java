@@ -69,7 +69,8 @@ public class Menu {
                     CSVFileIO reportIO = new CSVFileIO();
                     try {
 
-                        reportIO.saveReport("C:\\Reskill\\Report.txt");
+                        //reportIO.saveReport("C:\\Reskill\\Report.txt");
+                        reportIO.saveReport("/Users/svetlanahaugland/Desktop/Report.txt");
 
                     }
                     catch (IOException IO){
