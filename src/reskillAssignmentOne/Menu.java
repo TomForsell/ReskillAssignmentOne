@@ -66,6 +66,15 @@ public class Menu {
                     break;
 
                 case 5:
+                    CSVFileIO reportIO = new CSVFileIO();
+                    try {
+
+                        reportIO.saveReport("C:\\Reskill\\Report.txt");
+
+                    }
+                    catch (IOException IO){
+                        user.logMessage("Error when generating report");
+                    }
 
 
 
