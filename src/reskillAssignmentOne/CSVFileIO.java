@@ -12,7 +12,7 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 
-public class CSVFileHandling implements FileHandling {
+public class CSVFileIO implements FileIO {
     private  String[] csvValues;
     private List<String[]> orderlist = new ArrayList<>();
     private ServiceSales myServiceSales = new ServiceSales();

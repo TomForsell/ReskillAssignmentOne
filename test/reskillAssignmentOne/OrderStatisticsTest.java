@@ -1,7 +1,6 @@
 package reskillAssignmentOne;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -11,27 +10,14 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
-
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.HashMap;
-
-import static org.junit.Assert.*;
-
-    public class OrderStatisticsTest {
+public class OrderStatisticsTest {
 
         private ServiceSales testServiceSales;
-        private CSVFileHandling testCSVFilehandling;
+        private CSVFileIO testCSVFilehandling;
         @Before
         public void setUp() throws Exception {
             testServiceSales = new ServiceSales();
-            testCSVFilehandling = new CSVFileHandling();
+            testCSVFilehandling = new CSVFileIO();
             testCSVFilehandling.readFile("C:\\Reskill\\salesrecords.txt");
             testServiceSales = testCSVFilehandling.getMyServiceSales();
         }

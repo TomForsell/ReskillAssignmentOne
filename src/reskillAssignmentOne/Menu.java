@@ -3,13 +3,12 @@ package reskillAssignmentOne;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
 
 
-    CSVFileHandling newFile;
+    CSVFileIO newFile;
     String filePath;
     Scanner scanner = new Scanner(System.in);
     ConsoleIO user = new ConsoleIO(scanner);
@@ -17,7 +16,7 @@ public class Menu {
     ServiceSales service;
 
     public Menu(String path) {
-        newFile = new CSVFileHandling();
+        newFile = new CSVFileIO();
         this.filePath = path;
         //this.scanner = scanner;
         try{
