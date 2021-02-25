@@ -8,10 +8,11 @@ import java.util.Scanner;
 public class Menu {
 
 
-    CSVFileIO newFile;
-    String filePath;
-    Scanner scanner = new Scanner(System.in);
-    ConsoleIO user = new ConsoleIO(scanner);
+    private CSVFileIO newFile;
+    private String filePath;
+    private final String SAVED_REPORT_PATH = "C:\\Reskill\\Report.txt";
+    private Scanner scanner = new Scanner(System.in);
+    private ConsoleIO user = new ConsoleIO(scanner);
 
     ServiceSales service;
 
@@ -66,8 +67,8 @@ public class Menu {
                     CSVFileIO reportIO = new CSVFileIO();
                     try {
 
-                        reportIO.saveReport("C:\\Reskill\\Report.txt", service);
-                        user.logMessage("Report Saved");
+                        reportIO.saveReport(SAVED_REPORT_PATH, service);
+                        user.logMessage("Report Saved: " + SAVED_REPORT_PATH );
 
                     }
                     catch (IOException IO){
