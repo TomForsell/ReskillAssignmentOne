@@ -73,6 +73,12 @@ public class OrderStatisticsTest {
             assertEquals(686800706, testServiceSales.findOrder(686800706).getOrderId());
         }
 
+        @Test
+        public void findMaxOrder_OrderFound() {
+             HashMap<Long, Order> testAllOrders = testServiceSales.getAllOrders();
+             assertEquals(403961122, testServiceSales.findMaxOrder().getOrderId());
+        }
+
 
 
 
