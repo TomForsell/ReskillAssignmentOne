@@ -95,6 +95,9 @@ public class ServiceSales {
         return ourValues.stream().max(comparing(Order::getProfitForOrder)).get();
     }
 
+    public void displayTotalRevenueForOrders(){
+        user.logMessage(" \nTotal revenue for all orders " + getTotalOrderRevenue());
+    }
     //Printing all the orders in the system
     public void printOrders(){
         Collection<Order> orders = allOrders.values();

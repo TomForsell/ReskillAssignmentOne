@@ -37,7 +37,7 @@ import static org.junit.Assert.*;
         }
 
         @Test
-        @Ignore
+
         public void getTotalOrderRevenue() throws FileNotFoundException, IOException, ParseException {
             HashMap<Long, Order> testAllOrders = testServiceSales.getAllOrders();
             assertEquals(1327321840.33, testServiceSales.getTotalOrderRevenue(), 0.002);
@@ -66,17 +66,14 @@ import static org.junit.Assert.*;
         @Test
         public void getAverageCostPerOrder(){
             //184,96
-
         }
         @Test
         public void getTotalProfit(){
             //391202611,56
-
         }
         @Test
         public void getAverageProfitPerOrder(){
             //391202611,56
-
         }
 
     }

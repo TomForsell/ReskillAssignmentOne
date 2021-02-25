@@ -149,7 +149,7 @@ public class Menu {
     private void submenuOrder(){
         int userChoice;
         do {
-            userChoice = user.getInt("\n 1: See order details \n 2: Find the most profitable order \n 3: Exit \n");
+            userChoice = user.getInt("\n 1: See order details \n 2: Find the most profitable order \n 3: See Total Revenue \n 4: Exit \n");
             switch (userChoice) {
 
                 case 1:
@@ -162,9 +162,14 @@ public class Menu {
                     service.displayMostProfitableOrder();
                     break;
 
+                case 3:
+
+                    service.displayTotalRevenueForOrders();
+                    break;
+
             }
         }
-        while (userChoice != 3);
+        while (userChoice != 4);
     }
 
     private void submenuItem(){
