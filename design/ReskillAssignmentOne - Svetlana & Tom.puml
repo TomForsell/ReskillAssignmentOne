@@ -17,9 +17,15 @@ void saveReport()
 }
 
 interface IO
-class Item
+class Item{
+public double getProfitPerItemType()....
+
+
+}
 class Menu
-class Order
+class Order{
+public double getProfitForOrder()....
+}
 class Region
 class ReportContent{
 public String toString()
@@ -46,4 +52,5 @@ DataProcessing --|> Channel
 ServiceSales --|> ReportContent
 ServiceSales --|> ConsoleIO
 Order --|> ServiceSales
+Channel --|> ServiceSales
 @enduml
