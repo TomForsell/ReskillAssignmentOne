@@ -2,7 +2,10 @@
 'https://plantuml.com/class-diagram
 
 class Channel
-class ConsoleIO implements IO
+class ConsoleIO implements IO{
+public ConsoleIO(Scanner sc)
+
+}
 class CSVFileIO implements FileIO{
 List ReadFile()
 void saveReport()
@@ -16,7 +19,9 @@ List ReadFile()
 void saveReport()
 }
 
-interface IO
+interface IO{
+void logMessage(String message)
+}
 class Item{
 public double getProfitPerItemType()....
 
@@ -26,7 +31,9 @@ class Menu
 class Order{
 public double getProfitForOrder()....
 }
-class Region
+class Region{
+public double getRevenue()......{
+    }
 class ReportContent{
 public String toString()
 }
