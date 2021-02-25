@@ -28,10 +28,17 @@ public class CSVFileIO implements FileIO {
         }
         return orderlist;
     }
-    public void saveReport(){
+    public void saveReport(String reportFilePath) throws IOException{
+
+            FileWriter fileWriter = new FileWriter(reportFilePath);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print("Some String");
+            printWriter.printf("test of formatted tesxt is %s and number %d ", "format", 1000);
+            printWriter.close();
+        }
 
 
-    }
+
 
     private void readBuffer(String filePath, boolean firstEntry) throws ParseException, IOException {
         String line="";
