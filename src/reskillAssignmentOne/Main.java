@@ -7,9 +7,9 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Give me file path: ");
-        String filePath ="/Users/svetlanahaugland/Desktop/SalesRecords.csv" ;//scanner.next();
+        //String filePath ="/Users/svetlanahaugland/Desktop/SalesRecords.csv" ;//scanner.next();
 
-        //String filePath ="C:\\Reskill\\salesrecords.txt" ;//scanner.next();
+        String filePath ="C:\\Reskill\\salesrecords.txt" ;//scanner.next();
 
         Menu menu = new Menu(filePath);
         menu.menuStart();

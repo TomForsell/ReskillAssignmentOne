@@ -35,8 +35,6 @@ public class Menu {
 
     }
 
-
-
     public void menuStart() {
 
         int userChoice;
@@ -54,7 +52,6 @@ public class Menu {
                 case 2:
 
                     break;
-
                 case 3:
                     submenuOrder();
 
@@ -69,16 +66,13 @@ public class Menu {
                     CSVFileIO reportIO = new CSVFileIO();
                     try {
 
-                        reportIO.saveReport("C:\\Reskill\\Report.txt");
+                        reportIO.saveReport("C:\\Reskill\\Report.txt", service);
+                        user.logMessage("Report Saved");
 
                     }
                     catch (IOException IO){
                         user.logMessage("Error when generating report");
                     }
-
-
-
-
                     break;
             }
         }

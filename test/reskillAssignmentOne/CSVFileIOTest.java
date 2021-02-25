@@ -95,7 +95,7 @@ public class CSVFileIOTest {
         testOrderList=testCSVReader.readFile(filePathCorrectFile);
 
         ReportContent myReport = new ReportContent(testCSVReader.getMyServiceSales());
-        testCSVReader.saveReport(filePathForReport);
+        testCSVReader.saveReport(filePathForReport,testCSVReader.getMyServiceSales());
         System.out.println(myReport.toString());
        // System.out.println(newReport.getMostProfitableOrder());
 

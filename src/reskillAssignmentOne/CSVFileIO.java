@@ -24,7 +24,7 @@ public class CSVFileIO implements FileIO {
         }
         return orderlist;
     }
-    public void saveReport(String reportFilePath) throws IOException{
+    public void saveReport(String reportFilePath,ServiceSales myServiceSales) throws IOException{
         ReportContent myReportContent = new ReportContent(myServiceSales);
         FileWriter fileWriter = new FileWriter(reportFilePath);
         PrintWriter printWriter = new PrintWriter(fileWriter);
