@@ -7,7 +7,7 @@ class CSVFileIO implements FileIO{
 List ReadFile()
 void saveReport()
 }
-class DataHandling{
+class DataProcessing{
 parseStrings()
 populateObjects
 }
@@ -35,12 +35,12 @@ class ServiceSales{
 
 
 CSVFileIO <|-- ReportContent
-CSVFileIO <|--|> DataHandling
-DataHandling --|> Order
-DataHandling --|> ServiceSales
-DataHandling --|> Region
-DataHandling --|> Item
-DataHandling --|> Channel
+CSVFileIO <|--|> DataProcessing
+DataProcessing --|> Order
+DataProcessing --|> ServiceSales
+DataProcessing --|> Region
+DataProcessing --|> Item
+DataProcessing --|> Channel
 ServiceSales --|> ReportContent
 ServiceSales --|> ConsoleIO
 @enduml
