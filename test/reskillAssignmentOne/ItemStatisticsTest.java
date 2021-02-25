@@ -37,6 +37,5 @@ public class ItemStatisticsTest {
             assertEquals("Beverages", testServiceSales.mostSoldItemType(countItems));
         }
 
-
     }
 
