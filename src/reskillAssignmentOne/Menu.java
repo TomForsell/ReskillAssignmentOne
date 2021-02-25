@@ -66,7 +66,7 @@ public class Menu {
                     break;
 
                 case 5:
-                    service.getCountItemTypes(service.getAllItems());
+                    service.displayMostSoldItemType();
 
 
 
@@ -189,7 +189,7 @@ public class Menu {
                     break;
 
                 case 2:
-                    service.mostSoldItem();
+                    service.displayMostSoldItemType();
 
                     break;
             }

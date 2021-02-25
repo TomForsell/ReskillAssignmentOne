@@ -30,17 +30,6 @@ public class ItemStatisticsTest {
             assertEquals(12, uniqueItems.size());
         }
 
-        @Test
-        public void getMostCommonItem(){
-            ArrayList<Item> testList = testServiceSales.getAllItems();
-            assertEquals("Cereal", testServiceSales.mostCommon(testList).getType());
-
-        }
-
-
-
-
-
 
     }
 

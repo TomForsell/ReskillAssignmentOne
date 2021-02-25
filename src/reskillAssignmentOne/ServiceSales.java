@@ -131,27 +131,32 @@ public class ServiceSales {
     }
 
     //4.2 Most sold item in all regions
-    public void mostSoldItem(){
-        Item item = mostCommon(allItems);
-        user.logMessage(item.toString());
+    public HashMap<String, Integer> getCountItemTypes(ArrayList<Item> list){
+        Map<String, Integer> hm = new HashMap<>();
+
+        for (Item i : list) {
+            String t = i.getType();
+            Integer j = hm.get(t);
+            hm.put(t, (j == null) ? 1 : j + 1);
+        }
+
+        // displaying the occurrence of elements in the arraylist
+        for (Map.Entry<String, Integer> val : hm.entrySet()) {
+            System.out.println("Element " + val.getKey() + " "
+                    + "occurs"
+                    + ": " + val.getValue() + " times");
+        }
+        return (HashMap<String, Integer>) hm;
     }
 
-    public <T> T mostCommon(List<T> list) {
-        Map<T, Integer> map = new HashMap<>();
+    public String mostSoldItemType(HashMap<String,Integer> countMap){
+        return countMap.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
+    }
 
-        for (T t : list) {
-            Integer val = map.get(t);
-            map.put(t, val == null ? 1 : val + 1);
-        }
+    public void displayMostSoldItemType(){
+        String itemToDisplay = mostSoldItemType(getCountItemTypes(allItems));
+        user.logMessage("The most sold item type: " + itemToDisplay);
 
-        Map.Entry<T, Integer> max = null;
-
-        for (Map.Entry<T, Integer> e : map.entrySet()) {
-            if (max == null || e.getValue() > max.getValue())
-                max = e;
-        }
-
-        return max.getKey();
     }
 
     public void displayRegionInfo(){
@@ -245,24 +250,7 @@ public class ServiceSales {
         return allOrders;
     }
 
-    public HashMap<String, Integer> getCountItemTypes(ArrayList<Item> list){
 
-    Map<String, Integer> hm = new HashMap<>();
-
-        for (Item i : list) {
-            String t = i.getType();
-            Integer j = hm.get(t);
-            hm.put(t, (j == null) ? 1 : j + 1);
-        }
-
-    // displaying the occurrence of elements in the arraylist
-        for (Map.Entry<String, Integer> val : hm.entrySet()) {
-        System.out.println("Element " + val.getKey() + " "
-                + "occurs"
-                + ": " + val.getValue() + " times");
-         }
-        return (HashMap<String, Integer>) hm;
-    }
 
 
 
