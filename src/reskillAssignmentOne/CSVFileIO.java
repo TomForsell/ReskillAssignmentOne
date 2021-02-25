@@ -38,7 +38,7 @@ public class CSVFileIO implements FileIO {
                 csvValues = line.split(",");
                 if(!firstEntry) {
                     myDataHandling.parseStrings(csvValues);
-                    myDataHandling.populateObjects(csvValues);
+                    myDataHandling.populateObjects(csvValues,myServiceSales);
                 }
                 firstEntry =false;
                  orderlist.add(csvValues);

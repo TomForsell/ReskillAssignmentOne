@@ -1,6 +1,7 @@
 package reskillAssignmentOne;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -21,7 +22,6 @@ public class OrderStatisticsTest {
             testCSVFilehandling.readFile("C:\\Reskill\\salesrecords.txt");
             testServiceSales = testCSVFilehandling.getMyServiceSales();
         }
-
         @Test
         public void getTotalOrderRevenue() throws FileNotFoundException, IOException, ParseException {
             HashMap<Long, Order> testAllOrders = testServiceSales.getAllOrders();
@@ -40,23 +40,28 @@ public class OrderStatisticsTest {
 
         }
         @Test
+        @Ignore
         public void getAveragelUnitPrice() {
 
             //assertEquals(262.10,testServiceSales.getAverageUnitPrice(),0.10);
         }
         @Test
+        @Ignore
         public void getTotalUnitsCost(){
             //  assertEquals(184965.11,testServiceSales.getTotalUnitsCost(),0.02);
         }
         @Test
+        @Ignore
         public void getAverageCostPerOrder(){
             //184,96
         }
         @Test
+        @Ignore
         public void getTotalProfit(){
             //391202611,56
         }
         @Test
+        @Ignore
         public void getAverageProfitPerOrder(){
             //391202611,56
         }

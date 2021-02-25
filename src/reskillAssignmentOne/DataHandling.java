@@ -15,7 +15,6 @@ import static java.lang.Long.parseLong;
 
 
 public class DataHandling {
-    private ServiceSales myServiceSales = new ServiceSales();
 
     private long orderId;
     private Date orderDate;
@@ -47,7 +46,7 @@ public class DataHandling {
         revenue = parseDouble(csvValues[11]);
     }
 
-    public void populateObjects(String[] csvValues){
+    public void populateObjects(String[] csvValues, ServiceSales myServiceSales){
         Item newItem = new Item(itemType,unitPrice,unitCost);
         Order newOrder = new Order(orderId,orderDate,shipDate,orderPriority,newItem,unitsSold,region,country,channel, revenue);
         myServiceSales.addItem(newItem);
