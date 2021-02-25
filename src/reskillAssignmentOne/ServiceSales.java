@@ -64,6 +64,10 @@ public class ServiceSales {
         return allItems;
     }
 
+    public HashMap<Long, Order> getAllOrders() {
+        return allOrders;
+    }
+
     //Help methods
     public boolean isRegionAdded(Region regionToCheck){
         if (regionsWithOrders.containsKey(regionToCheck.getName())){
@@ -246,9 +250,7 @@ public class ServiceSales {
 
 
 
-    public HashMap<Long, Order> getAllOrders() {
-        return allOrders;
-    }
+
 
 
 
