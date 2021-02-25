@@ -19,8 +19,8 @@ public class OrderStatisticsTest {
         public void setUp() throws Exception {
             testServiceSales = new ServiceSales();
             testCSVFilehandling = new CSVFileIO();
-            //testCSVFilehandling.readFile( "C:\\Reskill\\salesrecords.txt");
-            testCSVFilehandling.readFile("/Users/svetlanahaugland/Desktop/SalesRecords.csv");
+            testCSVFilehandling.readFile( "C:\\Reskill\\salesrecords.txt");
+            //testCSVFilehandling.readFile("/Users/svetlanahaugland/Desktop/SalesRecords.csv");
             testServiceSales = testCSVFilehandling.getMyServiceSales();
         }
         @Test

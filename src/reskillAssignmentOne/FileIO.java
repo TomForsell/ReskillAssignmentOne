@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface FileIO {
     List readFile(String filePath) throws FileNotFoundException, IOException, ParseException;
-    void saveReport(String reportFilePath) throws IOException;
+    void saveReport(String reportFilePath, ServiceSales myServiceSales) throws IOException;
 
 }
