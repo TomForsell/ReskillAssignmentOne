@@ -56,6 +56,10 @@ public class ServiceSales {
     //Getters
 
 
+    public HashMap<String, Item> getHashMapItems() {
+        return hashMapItems;
+    }
+
     //Help methods
     public boolean isRegionAdded(Region regionToCheck){
         if (regionsWithOrders.containsKey(regionToCheck.getName())){
