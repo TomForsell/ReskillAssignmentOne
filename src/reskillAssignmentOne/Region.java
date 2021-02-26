@@ -1,5 +1,9 @@
 package reskillAssignmentOne;
 
+/*
+Not implemented in the main programme yet
+ */
+
 import java.util.Collection;
 import java.util.HashMap;
 
