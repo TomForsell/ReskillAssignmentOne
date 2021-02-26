@@ -49,11 +49,11 @@ public class Menu {
             switch (userChoice) {
 
                 case 1:
-
+                    submenuRegion();
                     break;
 
                 case 2:
-
+                    submenuCountry();
                     break;
                 case 3:
                     submenuOrder();

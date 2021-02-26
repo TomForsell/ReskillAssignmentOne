@@ -13,6 +13,7 @@ public class ServiceSales {
     private HashMap <Long,Order> allOrders; // to display order info
     private ArrayList<Item> allItems; // to find the most solgt item type
     private HashMap<String, Item> hashMapItems; // to display info about item types.
+    private HashMap<String, ArrayList<Order>> regions;
 
 
     public ServiceSales(){
@@ -21,6 +22,7 @@ public class ServiceSales {
         allItems = new ArrayList<>();
         user = new ConsoleIO(scanner);
         hashMapItems = new HashMap<>();
+        regions = new HashMap<>();
 
     }
 
