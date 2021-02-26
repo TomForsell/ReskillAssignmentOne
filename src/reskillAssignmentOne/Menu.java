@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Menu {
 
 
-    private CSVFileIO newFile;
+    private CSVFileIO newFile;// Comment from Andy: move this to the Interface
     private String filePath;
     //private final String SAVED_REPORT_PATH = "C:\\Reskill\\Report.txt";
     private final String SAVED_REPORT_PATH = "/Users/svetlanahaugland/Desktop/Report.txt";
