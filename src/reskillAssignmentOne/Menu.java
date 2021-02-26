@@ -10,8 +10,8 @@ public class Menu {
 
     private CSVFileIO newFile;// Comment from Andy: move this to the Interface
     private String filePath;
-    //private final String SAVED_REPORT_PATH = "C:\\Reskill\\Report.txt";
-    private final String SAVED_REPORT_PATH = "/Users/svetlanahaugland/Desktop/Report.txt";
+    private final String SAVED_REPORT_PATH = "C:\\Reskill\\Report.txt";
+    //private final String SAVED_REPORT_PATH = "/Users/svetlanahaugland/Desktop/Report.txt";
     private Scanner scanner = new Scanner(System.in);
     private ConsoleIO user = new ConsoleIO(scanner);
 
